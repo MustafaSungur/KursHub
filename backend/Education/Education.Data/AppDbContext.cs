@@ -21,6 +21,9 @@ namespace Education.Data
 		public DbSet<Tag> Tags { get; set; }
 		public DbSet<Topic> Topics { get; set; }
 
+		// ContentUser DbSet tanımlaması
+		public DbSet<ContentUser> ContentUsers { get; set; }
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
@@ -43,6 +46,22 @@ namespace Education.Data
 
 			modelBuilder.Entity<ContentTag>()
 				.HasKey(ct => new { ct.ContentId, ct.TagId });
+
+			// ContentUser için ilişkileri tanımlıyoruz
+			modelBuilder.Entity<ContentUser>()
+				.HasKey(cu => new { cu.UserId, cu.ContentId }); // Composite key (Birleşik anahtar)
+
+			modelBuilder.Entity<ContentUser>()
+				.HasOne(cu => cu.User)
+				.WithMany(u => u.ViewedContents)
+				.HasForeignKey(cu => cu.UserId)
+				.OnDelete(DeleteBehavior.Cascade); // Kullanıcı silindiğinde izleme geçmişi de silinir
+
+			modelBuilder.Entity<ContentUser>()
+				.HasOne(cu => cu.Content)
+				.WithMany(c => c.ViewedUsers)
+				.HasForeignKey(cu => cu.ContentId)
+				.OnDelete(DeleteBehavior.Cascade); // İçerik silindiğinde izleme geçmişi de silinir
 
 			// Diğer ilişkiler
 			modelBuilder.Entity<Content>()

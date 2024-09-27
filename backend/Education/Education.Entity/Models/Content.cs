@@ -24,7 +24,7 @@ namespace Education.Entity.Models
 		public required string UserId { get; set; }
 
 		[ForeignKey(nameof(UserId))]
-		public ApplicationUser? User { get; set; }
+		public ApplicationUser? CreatedUser { get; set; }
 
 		public List<Comment>? Comments { get; set; }
 
@@ -46,5 +46,6 @@ namespace Education.Entity.Models
 		[ForeignKey(nameof(SubCategoryId))]
 		public SubCategory? SubCategory { get; set; }
 
-	}
+        public List<ContentUser>? ViewedUsers { get; set; }
+    }
 }

@@ -43,5 +43,8 @@ namespace Education.Entity.Models
 		public string? ConfirmPassword { get; set; }
 
 		public List<Rating>? Ratings { get; set; }
+
+		public List<ContentUser>? ViewedContents{ get; set; }
+
 	}
 }

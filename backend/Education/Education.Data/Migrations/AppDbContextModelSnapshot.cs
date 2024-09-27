@@ -281,6 +281,30 @@ namespace Education.Data.Migrations
                     b.ToTable("ContentTags");
                 });
 
+            modelBuilder.Entity("Education.Entity.Models.ContentUser", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.Property<long>("ContentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("RegisterDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("State")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("UserId", "ContentId");
+
+                    b.HasIndex("ContentId");
+
+                    b.ToTable("ContentUsers");
+                });
+
             modelBuilder.Entity("Education.Entity.Models.Rating", b =>
                 {
                     b.Property<long>("Id")
@@ -581,17 +605,17 @@ namespace Education.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Education.Entity.Models.ApplicationUser", "User")
+                    b.HasOne("Education.Entity.Models.ApplicationUser", "CreatedUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("CreatedUser");
+
                     b.Navigation("SubCategory");
 
                     b.Navigation("Topic");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Education.Entity.Models.ContentTag", b =>
@@ -611,6 +635,25 @@ namespace Education.Data.Migrations
                     b.Navigation("Content");
 
                     b.Navigation("Tag");
+                });
+
+            modelBuilder.Entity("Education.Entity.Models.ContentUser", b =>
+                {
+                    b.HasOne("Education.Entity.Models.Content", "Content")
+                        .WithMany("ViewedUsers")
+                        .HasForeignKey("ContentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Education.Entity.Models.ApplicationUser", "User")
+                        .WithMany("ViewedContents")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Content");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Education.Entity.Models.Rating", b =>
@@ -697,6 +740,8 @@ namespace Education.Data.Migrations
             modelBuilder.Entity("Education.Entity.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Ratings");
+
+                    b.Navigation("ViewedContents");
                 });
 
             modelBuilder.Entity("Education.Entity.Models.Category", b =>
@@ -716,6 +761,8 @@ namespace Education.Data.Migrations
                     b.Navigation("ContentTags");
 
                     b.Navigation("Ratings");
+
+                    b.Navigation("ViewedUsers");
                 });
 
             modelBuilder.Entity("Education.Entity.Models.SubCategory", b =>

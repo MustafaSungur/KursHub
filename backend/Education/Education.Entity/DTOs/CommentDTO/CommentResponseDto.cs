@@ -16,6 +16,8 @@ namespace Education.Entity.DTOs.CommentDTO
 
 		public string? ContentTitle { get; set; } 
 
-		public List<CommentRequestDto>? Likes { get; set; } 
+		public List<CommentRequestDto>? Likes { get; set; }
+
+		public int LikeCount { get; set; }
 	}
 }
