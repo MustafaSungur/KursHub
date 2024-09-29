@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "49wPYBaAELE+Z+f3GeFT9O1OXGTBeiLXCEsPASAJnRI00ZCesqLmf4cuZ6mC3Qk344jCm6bBBJuOV+qbV6gLTQ==",
+  "dgSpecHash": "LP2h4cQn3fO9dUf5SM92twUQ+q7aNfJF3fW2vTFB4fDnDL0hUb3N+cc8VUH73tr7eJkG6e37gEf0CXtkBczQPg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj",
+  "projectFilePath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\10\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

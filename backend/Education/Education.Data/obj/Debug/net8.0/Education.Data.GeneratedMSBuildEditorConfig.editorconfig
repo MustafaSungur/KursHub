@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Education.Data
-build_property.ProjectDir = C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.Data\
+build_property.ProjectDir = c:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.Data\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

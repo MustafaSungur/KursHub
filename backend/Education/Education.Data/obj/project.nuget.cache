@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BqqoOwrPcm1/VBUy+XOXMISAgK7Gixu1AZOciblAZemuPBUx1s9RVyGObCeavTCfRT9Fhm4GUhAmSktB0einkg==",
+  "dgSpecHash": "RADnoXNDt7YRkUQvBVnk+Pgkb1ZMuzlCO7ExmuxOdUlplYZGhJfPBG+o917kZLKm280dDDijN8dH+6oYdqigPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj",
+  "projectFilePath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\10\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

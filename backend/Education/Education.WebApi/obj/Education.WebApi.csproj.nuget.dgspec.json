@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\Education.WebApi.csproj": {}
+    "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\Education.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj": {
+    "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj",
+        "projectUniqueName": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj",
         "projectName": "Education.Business",
-        "projectPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj",
+        "projectPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj",
         "packagesPath": "C:\\Users\\10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\obj\\",
+        "outputPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\10\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj": {
-                "projectPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj"
+              "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj": {
+                "projectPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj"
               },
-              "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj": {
-                "projectPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj"
+              "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj": {
+                "projectPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj"
               }
             }
           }
@@ -77,14 +77,14 @@
         }
       }
     },
-    "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj": {
+    "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj",
+        "projectUniqueName": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj",
         "projectName": "Education.Data",
-        "projectPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj",
+        "projectPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj",
         "packagesPath": "C:\\Users\\10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\obj\\",
+        "outputPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\10\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -101,8 +101,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj": {
-                "projectPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj"
+              "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj": {
+                "projectPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj"
               }
             }
           }
@@ -171,14 +171,14 @@
         }
       }
     },
-    "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj": {
+    "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj",
+        "projectUniqueName": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj",
         "projectName": "Education.Entity",
-        "projectPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj",
+        "projectPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj",
         "packagesPath": "C:\\Users\\10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\obj\\",
+        "outputPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\10\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -237,14 +237,14 @@
         }
       }
     },
-    "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\Education.WebApi.csproj": {
+    "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\Education.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\Education.WebApi.csproj",
+        "projectUniqueName": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\Education.WebApi.csproj",
         "projectName": "Education.WebApi",
-        "projectPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\Education.WebApi.csproj",
+        "projectPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\Education.WebApi.csproj",
         "packagesPath": "C:\\Users\\10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\obj\\",
+        "outputPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\10\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -261,14 +261,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj": {
-                "projectPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj"
+              "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj": {
+                "projectPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj"
               },
-              "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj": {
-                "projectPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj"
+              "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj": {
+                "projectPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Data\\Education.Data.csproj"
               },
-              "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj": {
-                "projectPath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj"
+              "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj": {
+                "projectPath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj"
               }
             }
           }

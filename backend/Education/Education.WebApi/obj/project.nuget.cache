@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/37WfxC4RKqTCMWJgpYqH2kk5fxNBZGU0K1SIUyoJ47ylc504RWGuOLsgTodMl+jxGSE/ESwEHs8y7jY8ETLoQ==",
+  "dgSpecHash": "aEAHKVvyer+LMKOHrHOLy/k58wlmLxApfIU61cfxzqsDGz0IHoRrrQ5hSeGkAdrN8QTehnyz7fPtUJdgJdNMMw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\Education.WebApi.csproj",
+  "projectFilePath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\Education.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\10\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
