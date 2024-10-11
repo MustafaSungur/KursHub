@@ -1,10 +1,19 @@
 import { lazy, Suspense } from "react";
 import LoadingSpinner from "./components/LoadingSpinner";
 import StudentPrivateRoute from "./components/privateRoutes/StudentPrivateRoute ";
-import AuthLayout from "./components/layouts/AuthLayout";
 import HomeLayout from "./pages/home/HomeLayout";
 import Dashboard from "./pages/home/dashboard/Dashboard";
 import WatchHistory from "./pages/home/dashboard/WatchHistory";
+import AuthLayout from "./pages/auth/AuthLayout";
+import InstructorLayout from "./pages/instructorPanel/InstructorLayout";
+import InstructorPrivateRoute from "./components/privateRoutes/InstructorPrivateRoute";
+import InstructorEdit from "./pages/instructorPanel/InstructorDashboard";
+import CoursesAnalysis from "./pages/instructorPanel/InstructorAnalysis/CoursesAnalysis";
+import CourseAnalisisDetails from "./pages/instructorPanel/InstructorAnalysis/CourseAnalisisDetails";
+import AdminPrivateRoute from "./components/privateRoutes/AdminPrivateRoute";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminCoursesManagement from "./pages/admin/AdminCoursesManagement";
+import AdminUsersManagement from "./pages/admin/AdminUsersManagement";
 
 // Lazy load components
 const Login = lazy(() => import("./pages/auth/Login"));
@@ -90,6 +99,63 @@ const routes = [
       },
     ],
   },
+
+  {
+    name: "Instructor Panel",
+    path: "/instructor",
+    element: (
+      <InstructorPrivateRoute>
+        <InstructorLayout />
+      </InstructorPrivateRoute>
+    ),
+    children: [
+      {
+        path: "edit",
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <InstructorEdit />
+          </Suspense>
+        ),
+      },
+      {
+        path: "analisis",
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <CoursesAnalysis />
+          </Suspense>
+        ),
+      },
+      {
+        path: "analisis/:id",
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <CourseAnalisisDetails />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+
+  {
+    name: "Admin Panel",
+    path: "/admin",
+    element: (
+      <AdminPrivateRoute>
+        <AdminLayout />
+      </AdminPrivateRoute>
+    ),
+    children: [
+      {
+        path: "/admin/courses",
+        element: <AdminCoursesManagement />,
+      },
+      {
+        path: "/admin/users",
+        element: <AdminUsersManagement />,
+      },
+    ],
+  },
+
   {
     path: "*",
     element: (
@@ -98,28 +164,6 @@ const routes = [
       </Suspense>
     ),
   },
-
-  // {
-  //   name: "Instructor Panel",
-  //   path: "/instructor",
-  //   element: (
-  //     <PrivateRoute auth={true}>
-  //       <InstructorLayout />
-  //     </PrivateRoute>
-  //   ),
-  //   children: [],
-  // },
-
-  // {
-  //   name: "Admin Panel",
-  //   path: "/admin",
-  //   element: (
-  //     <PrivateRoute auth={true}>
-  //       <AdminLayout />
-  //     </PrivateRoute>
-  //   ),
-  //   children: [],
-  // },
 ];
 
 export default routes;

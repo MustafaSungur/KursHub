@@ -150,3 +150,16 @@ C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.We
 C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\obj\Debug\net8.0\ref\Education.WebApi.dll
 C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Npgsql.dll
 C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\obj\Debug\net8.0\Education.WebApi.sourcelink.json
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Education.WebApi.staticwebassets.runtime.json
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\FFMpegCore.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Instances.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Xabe.FFmpeg.dll

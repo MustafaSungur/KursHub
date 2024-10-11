@@ -2,7 +2,7 @@
 
 namespace Education.Data.Repositories.Concrete.EfCore
 {
-    public class RepositoryManager : IRepositoryManager
+	public class RepositoryManager : IRepositoryManager
     {
         private readonly AppDbContext _context;
         private readonly Lazy<ICategoryRepository> _categoryRepository;
@@ -13,8 +13,8 @@ namespace Education.Data.Repositories.Concrete.EfCore
         private readonly Lazy<IRatingRepository> _ratingRepository;
         private readonly Lazy<ISubCategoryRepository> _subcategoryRepository;
         private readonly Lazy<ITagRepository> _tagRepository;
-        private readonly Lazy<ITopicRepository> _topicRepository;
         private readonly Lazy<IContentUserRepository> _contentUserRepository;
+        private readonly Lazy<ITopicRepository> _topicRepository;
 
         public RepositoryManager(AppDbContext repositoryContext)
         {
@@ -27,20 +27,20 @@ namespace Education.Data.Repositories.Concrete.EfCore
 			_ratingRepository = new Lazy<IRatingRepository>(() => new RatingRepository(_context));
 			_subcategoryRepository = new Lazy<ISubCategoryRepository>(() => new SubCategoryRepository(_context));
 			_tagRepository = new Lazy<ITagRepository>(() => new TagRepository(_context));
-			_topicRepository = new Lazy<ITopicRepository>(() => new TopicRepository(_context));
 			_contentUserRepository = new Lazy<IContentUserRepository>(() => new ContentUserRepository(_context));
+			_topicRepository = new Lazy<ITopicRepository>(() => new TopicRepository(_context));
 		}
 
         public ICategoryRepository CategoryRepository => _categoryRepository.Value;
         public ICommentLikeRepository CommentLikeRepository => _commentLikeRepository.Value;
         public IContentRepository ContentRepository => _contentRepository.Value;
-        public IRatingRepository RaitingRepository => _ratingRepository.Value;
+        public IRatingRepository RatingRepository => _ratingRepository.Value;
 		public ICommentRepository CommentRepository => _commentRepository.Value;
 		public ISubCategoryRepository SubCategoryRepository => _subcategoryRepository.Value;
 		public ITagRepository TagRepository => _tagRepository.Value;
 		public IContentTagRepository ContentTagRepository => _contentTagRepository.Value;
-		public ITopicRepository TopicRepository => _topicRepository.Value;
         public IContentUserRepository ContentUserRepository => _contentUserRepository.Value;
+        public ITopicRepository TopicRepository => _topicRepository.Value;
 
 		public async Task SaveAsync()
         {

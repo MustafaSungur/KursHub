@@ -14,6 +14,7 @@ interface Course {
   id: number;
   title: string;
   image: string;
+  category: string;
   subcategory: string;
   tags: string[];
 }

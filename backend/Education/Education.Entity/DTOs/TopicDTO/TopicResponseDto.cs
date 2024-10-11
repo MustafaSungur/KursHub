@@ -7,8 +7,12 @@ namespace Education.Entity.DTOs.TopicDTO
 	{
 		public int Id { get; set; }
 
-		public string? Name { get; set; }
+		public required string Name { get; set; }
 
-		public List<ContentResponseDto>? Contents { get; set; } // İsteğe bağlı olarak içerikler
+		public int SubCategoryId { get; set; }
+
+		public string? SubCategoryName { get; set; }
+
+		public List<ContentResponseDto>? Contents { get; set; }
 	}
 }

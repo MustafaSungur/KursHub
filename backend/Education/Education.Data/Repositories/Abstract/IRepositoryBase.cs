@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Education.Data.Repositories.Abstract
 {
@@ -17,7 +17,10 @@ namespace Education.Data.Repositories.Abstract
 
 		Task<TEntity> UpdateAsync(TEntity entity);
 
-		// Dinamik sorgulamalar için: belirli bir şartla sorgulama (özellikle büyük veri setlerinde performans sağlar)
 		IQueryable<TEntity> FindByCondition(Expression<Func<TEntity, bool>> expression);
+
+
+
+
 	}
 }

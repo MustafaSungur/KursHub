@@ -12,6 +12,5 @@ namespace Education.Entity.DTOs.SubCategoryDTO
 
 		public string? CategoryName { get; set; } // İsteğe bağlı olarak kategori ismi
 
-		public List<SubCategoryRequestDto>? Contents { get; set; } // Alt kategorideki içerikler
 	}
 }

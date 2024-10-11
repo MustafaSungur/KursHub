@@ -1,6 +1,6 @@
 ﻿using Education.Entity.DTOs.CommentDTO;
 using Education.Entity.DTOs.ContentTagDTO;
-using Education.Entity.DTOs.RaitingDTO;
+using Education.Entity.DTOs.TopicDTO;
 
 namespace Education.Entity.DTOs.ContentDTO
 {
@@ -10,7 +10,7 @@ namespace Education.Entity.DTOs.ContentDTO
 
 		public required string Title { get; set; }
 
-		public string? Description { get; set; }
+		public required string? Description { get; set; }
 
 		public string? VideoUrl { get; set; }
 
@@ -24,13 +24,13 @@ namespace Education.Entity.DTOs.ContentDTO
 
 		public string? TopicName { get; set; }
 
-		public int RaitingCount { get; set; }
+		public int RatingCount { get; set; }
 
 		public float Rating { get; set; }
 
 		public int SubCategoryId { get; set; }
 
-		public string? SubCategoryName { get; set; }
+		public required TopicResponseDto  Topic { get; set; }
 
 		public List<CommentResponseDto>? Comments { get; set; }
 

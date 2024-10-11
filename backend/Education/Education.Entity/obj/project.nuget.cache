@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "euXl3dMLa1mdfdMRU4e+jqlT4LsX+1vHkNRytMbQpbXrzSRryvCQEuRCeyB3IkbxLi7TnpB7EKUVuI4pAMEHuA==",
+  "dgSpecHash": "Jtvje0ASPvGRZvhCCSOXVErMem1LeCc0TwcSZLXSGCZxeXz95R8Ih9d2oaANYgleje/5QbNI4NJHIz6oeURrCw==",
   "success": true,
-  "projectFilePath": "c:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj",
+  "projectFilePath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.Entity\\Education.Entity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\10\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.8\\microsoft.aspnetcore.cryptography.internal.8.0.8.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.8\\microsoft.aspnetcore.cryptography.keyderivation.8.0.8.nupkg.sha512",

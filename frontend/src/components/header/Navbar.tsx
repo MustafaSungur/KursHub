@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BookOpen, Menu, X } from "lucide-react";
 import { Button } from "../ui/button";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,12 +11,12 @@ const Navbar = () => {
   };
 
   return (
-    <header className="px-4 lg:px-6 h-14 flex items-center border-b py-10 bg-transparent ">
+    <header className="px-4 lg:px-24 h-14 flex items-center border-b py-10 bg-transparent ">
       {/* Logo */}
-      <NavLink className="flex items-center justify-center" to="/">
+      <Link className="flex items-center justify-center" to="/">
         <BookOpen className="h-10 w-10 text-amber-500 " />
         <span className="ml-2 text-3xl font-bold">KursHub</span>
-      </NavLink>
+      </Link>
 
       {/* Large Screen Navbar */}
       <nav className="hidden lg:flex ml-auto gap-4 sm:gap-6">

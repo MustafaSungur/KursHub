@@ -4,7 +4,7 @@ namespace Education.Entity.Enums
 {
 	public enum UserRole
 	{
-		User = 0,
+		User = 1,
 
 		UserAndInstructor = 2,
 

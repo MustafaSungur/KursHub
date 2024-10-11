@@ -35,6 +35,10 @@ export default function Dashboard() {
     setUser(updatedUser);
     setIsUpdateModalOpen(false);
   };
+  const openInstructorPanel = () => {
+    const url = `${window.location.origin}/instructor/edit`; // Mevcut domain + /instructor rotası
+    window.open(url, "_blank"); // Yeni sekmede aç
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -162,7 +166,11 @@ export default function Dashboard() {
                   <PlayCircle className="mr-2 h-4 w-4" /> İzlediğim Eğitimler
                 </Button>
               </Link>
-              <Button className="w-full" variant="outline">
+              <Button
+                className="w-full"
+                variant="outline"
+                onClick={openInstructorPanel}
+              >
                 <LayoutDashboard className="mr-2 h-4 w-4" /> Eğitmen Kontrol
                 Paneli
               </Button>

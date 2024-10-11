@@ -52,15 +52,15 @@ namespace Education.Business.MappingProfiles
 
 			// Tag mappings
 			CreateMap<Tag, TagResponseDto>().ReverseMap();
-			CreateMap<TagRequestDto, Tag>();
-
-			// Topic mappings
-			CreateMap<Topic, TopicResponseDto>().ReverseMap();
-			CreateMap<TopicRequestDto, Topic>();
+			CreateMap<TagRequestDto, Tag>();	
 
 			// ApplicationUser mappings
 			CreateMap<ApplicationUser, ApplicationUserResponseDto>().ReverseMap();
 			CreateMap<ApplicationUserRequestDto, ApplicationUser>();
+
+			// Topic mappings
+			CreateMap<Topic, TopicResponseDto>().ReverseMap();
+			CreateMap<TopicRequestDto, Topic>();
 		}
 	}
 }

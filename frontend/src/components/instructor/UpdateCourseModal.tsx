@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -16,19 +17,18 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Trash2 } from "lucide-react";
+import { Trash2, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Textarea } from "../ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
 
-const subcategories = [
-  "Web Geliştirme",
-  "Mobil Uygulama",
-  "Veri Bilimi",
-  "Tasarım",
-  "Pazarlama",
-];
-const tags = [
+const categories: { [key: string]: string[] } = {
+  "Web Geliştirme": ["Frontend", "Backend"],
+  "Mobil Uygulama": ["Cross", "Native"],
+  "Veri Bilimi": ["Yapay Sinir Ağları", "Makine Öğrenimi"],
+};
+
+const allTags = [
   "JavaScript",
   "React",
   "Node.js",
@@ -36,19 +36,33 @@ const tags = [
   "Machine Learning",
   "UI/UX",
   "SEO",
+  "HTML",
+  "CSS",
+  "TypeScript",
+  "Vue.js",
+  "Angular",
+  "Django",
+  "Flask",
+  "TensorFlow",
+  "Figma",
+  "Adobe XD",
+  "Content Marketing",
+  "Social Media Marketing",
+  "Email Marketing",
 ];
 
 interface Course {
-  description: string | number | readonly string[] | undefined;
   id: number;
   title: string;
+  description: string;
+  category: string;
   subcategory: string;
   tags: string[];
   image: string;
   video: string;
 }
 
-interface EditCourseModalProps {
+interface UpdateCourseModalProps {
   isOpen: boolean;
   onClose: () => void;
   onEdit: (course: Course) => void;
@@ -60,12 +74,14 @@ export function UpdateCourseModal({
   onClose,
   onEdit,
   course,
-}: EditCourseModalProps) {
+}: UpdateCourseModalProps) {
   const [editedCourse, setEditedCourse] = useState<Course | null>(course);
   const [newImage, setNewImage] = useState<File | null>(null);
   const [newVideo, setNewVideo] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [videoPreview, setVideoPreview] = useState<string | null>(null);
+  const [tagInput, setTagInput] = useState("");
+  const [filteredTags, setFilteredTags] = useState<string[]>([]);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -75,6 +91,19 @@ export function UpdateCourseModal({
       setVideoPreview(course.video);
     }
   }, [course]);
+
+  useEffect(() => {
+    if (tagInput && editedCourse) {
+      const filtered = allTags.filter(
+        (tag) =>
+          tag.toLowerCase().includes(tagInput.toLowerCase()) &&
+          !editedCourse.tags.includes(tag)
+      );
+      setFilteredTags(filtered);
+    } else {
+      setFilteredTags([]);
+    }
+  }, [tagInput, editedCourse]);
 
   const handleEdit = () => {
     if (editedCourse) {
@@ -103,15 +132,35 @@ export function UpdateCourseModal({
     }
   };
 
+  const addTag = (tag: string) => {
+    if (
+      editedCourse &&
+      editedCourse.tags.length < 3 &&
+      !editedCourse.tags.includes(tag)
+    ) {
+      setEditedCourse({ ...editedCourse, tags: [...editedCourse.tags, tag] });
+      setTagInput("");
+    }
+  };
+
+  const removeTag = (tag: string) => {
+    if (editedCourse) {
+      setEditedCourse({
+        ...editedCourse,
+        tags: editedCourse.tags.filter((t) => t !== tag),
+      });
+    }
+  };
+
   if (!course || !editedCourse) return null;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[800px] max-h-[80vh] flex flex-col mx-auto">
+      <DialogContent className="sm:max-w-[800px] max-h-[80vh] flex flex-col mx-auto overflow-hidden">
         <DialogHeader>
           <DialogTitle>Eğitimi Düzenle</DialogTitle>
         </DialogHeader>
-        <ScrollArea className="flex-grow overflow-y-auto  ">
+        <ScrollArea className="flex-grow overflow-y-auto">
           <div className="space-y-4 px-1">
             <div>
               <Label htmlFor="edit-title">Eğitim Başlığı</Label>
@@ -137,51 +186,115 @@ export function UpdateCourseModal({
               />
             </div>
             <div>
-              <Label htmlFor="edit-subcategory">Alt Kategori</Label>
+              {/* Kategori Seçimi (Update Modu) */}
+              <Label htmlFor="edit-category">Kategori</Label>
               <Select
-                onValueChange={(value) =>
-                  setEditedCourse({ ...editedCourse, subcategory: value })
-                }
-                defaultValue={editedCourse.subcategory}
+                onValueChange={(value) => {
+                  // Kategori değiştirildiğinde alt kategoriyi sıfırlıyoruz
+                  setEditedCourse({
+                    ...editedCourse,
+                    category: value,
+                    subcategory: "",
+                  });
+                }}
+                defaultValue={editedCourse.category} // Mevcut kategori seçili hale gelir
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Alt kategori seçin" />
+                  <SelectValue placeholder="Kategori seçin" />
                 </SelectTrigger>
                 <SelectContent>
-                  {subcategories.map((sub) => (
-                    <SelectItem key={sub} value={sub}>
-                      {sub}
+                  {Object.keys(categories).map((cat) => (
+                    <SelectItem key={cat} value={cat}>
+                      {cat}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </div>
             <div>
-              <Label>Etiketler (En az 1, en fazla 3)</Label>
-              <div className="flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <div key={tag} className="flex items-center space-x-2">
-                    <Checkbox
-                      id={`edit-${tag}`}
-                      checked={editedCourse.tags.includes(tag)}
-                      onCheckedChange={(checked) => {
-                        if (checked && editedCourse.tags.length < 3) {
-                          setEditedCourse({
-                            ...editedCourse,
-                            tags: [...editedCourse.tags, tag],
-                          });
-                        } else if (!checked) {
-                          setEditedCourse({
-                            ...editedCourse,
-                            tags: editedCourse.tags.filter((t) => t !== tag),
-                          });
-                        }
-                      }}
-                    />
-                    <label htmlFor={`edit-${tag}`}>{tag}</label>
-                  </div>
-                ))}
+              <Label htmlFor="edit-subcategory">Alt Kategori</Label>
+              <Select
+                onValueChange={(value) =>
+                  setEditedCourse({ ...editedCourse, subcategory: value })
+                }
+                defaultValue={editedCourse.subcategory} // Mevcut alt kategori seçili hale gelir
+                disabled={!editedCourse.category} // Kategori seçilmeden alt kategori seçilemez
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Alt kategori seçin" />
+                </SelectTrigger>
+                <SelectContent>
+                  {editedCourse.category &&
+                    categories[editedCourse.category].map((sub) => (
+                      <SelectItem key={sub} value={sub}>
+                        {sub}
+                      </SelectItem>
+                    ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label htmlFor="tags">Etiketler (En az 1, en fazla 3)</Label>
+              <motion.div layout className="flex flex-wrap gap-2 mb-2">
+                <AnimatePresence>
+                  {editedCourse.tags.map((tag) => (
+                    <motion.div
+                      key={tag}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Badge variant="secondary">
+                        {tag}
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="ml-1 p-0 h-auto rounded-xl"
+                          onClick={() => removeTag(tag)}
+                        >
+                          <X className="h-3 w-3" />
+                        </Button>
+                      </Badge>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
+              <div className="relative">
+                <Input
+                  id="tags"
+                  placeholder="Etiket ekleyin"
+                  value={tagInput}
+                  onChange={(e) => setTagInput(e.target.value)}
+                  maxLength={500}
+                />
+                <span className="absolute right-2 bottom-2 text-xs text-gray-400">
+                  {tagInput.length}/500
+                </span>
               </div>
+              <AnimatePresence>
+                {filteredTags.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-2 p-2 bg-gray-100 rounded-md overflow-hidden"
+                  >
+                    {filteredTags.map((tag) => (
+                      <Button
+                        key={tag}
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => addTag(tag)}
+                        className="mr-2 mb-2 hover:bg-gray-300 bg-gray-200 rounded-xl"
+                      >
+                        {tag}
+                      </Button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
             <div>
               <Label htmlFor="edit-video">Yeni Video Yükle (Opsiyonel)</Label>
@@ -192,11 +305,14 @@ export function UpdateCourseModal({
                 onChange={handleVideoChange}
               />
               {videoPreview && (
-                <video
+                <motion.video
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
                   ref={videoRef}
                   src={videoPreview}
                   controls
-                  className="w-full h-auto mt-2"
+                  className="w-auto h-64 mt-2"
                 />
               )}
             </div>
@@ -211,10 +327,13 @@ export function UpdateCourseModal({
                 onChange={handleImageChange}
               />
               {imagePreview && (
-                <img
+                <motion.img
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
                   src={imagePreview}
                   alt="Eğitim küçük resmi"
-                  className="w-full h-auto mt-2"
+                  className="w-auto h-64 mt-2"
                 />
               )}
             </div>
@@ -224,13 +343,14 @@ export function UpdateCourseModal({
           <div className="flex justify-between w-full">
             <Button
               onClick={handleEdit}
-              className=" bg-amber-500 hover:bg-amber-600 text-white"
+              className="bg-amber-500 hover:bg-amber-600 text-white rounded-xl"
             >
               Değişiklikleri Kaydet
             </Button>
             <Button
               variant="destructive"
               onClick={() => onEdit({ ...editedCourse, id: -1 })}
+              className="rounded-xl"
             >
               <Trash2 className="mr-2 h-4 w-4" /> Eğitimi Sil
             </Button>

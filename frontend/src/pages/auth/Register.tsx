@@ -40,10 +40,13 @@ export default function Register() {
       {/* Sol taraf - Kayıt formu */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 lg:p-24 overflow-y-auto">
         <div className="w-full max-w-md">
-          <div className="flex items-center justify-center mb-8">
-            <BookOpen className="h-10 w-10 text-amber-500" />
-            <span className="ml-2 text-2xl font-bold">KursHub</span>
-          </div>
+          <Link to="/">
+            <div className="flex items-center justify-center mb-8">
+              <BookOpen className="h-10 w-10 text-amber-500" />
+              <span className="ml-2 text-2xl font-bold">KursHub</span>
+            </div>
+          </Link>
+
           <h1 className="text-3xl font-bold mb-6">Yeni Hesap Oluşturun</h1>
           <form onSubmit={handleRegister} className="space-y-4">
             <div className="flex space-x-4">

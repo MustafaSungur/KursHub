@@ -3,32 +3,80 @@
   "WorkspaceRootPath": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.business\\exeptions\\serviceresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|solutionrelative:education.business\\exeptions\\serviceresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F7D25243-EBD4-4D81-B152-CDAD382B73C9}|Education.Entity\\Education.Entity.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.entity\\dtos\\contentdto\\contentrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7D25243-EBD4-4D81-B152-CDAD382B73C9}|Education.Entity\\Education.Entity.csproj|solutionrelative:education.entity\\dtos\\contentdto\\contentrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.business\\mappingprofiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|solutionrelative:education.business\\mappingprofiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\contentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\contentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\applicationusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\applicationusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F7D25243-EBD4-4D81-B152-CDAD382B73C9}|Education.Entity\\Education.Entity.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.entity\\dtos\\contentuserdto\\contentuserresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F7D25243-EBD4-4D81-B152-CDAD382B73C9}|Education.Entity\\Education.Entity.csproj|solutionrelative:education.entity\\dtos\\contentuserdto\\contentuserresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F7D25243-EBD4-4D81-B152-CDAD382B73C9}|Education.Entity\\Education.Entity.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.entity\\dtos\\contentuserdto\\contentuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F7D25243-EBD4-4D81-B152-CDAD382B73C9}|Education.Entity\\Education.Entity.csproj|solutionrelative:education.entity\\dtos\\contentuserdto\\contentuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\commentcontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\commentcontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.business\\education.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|solutionrelative:education.business\\education.business.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.business\\services\\concrete\\contentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|solutionrelative:education.business\\services\\concrete\\contentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{59BC798A-FFB8-47CA-9EA3-04676D4015E1}|Education.Data\\Education.Data.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{59BC798A-FFB8-47CA-9EA3-04676D4015E1}|Education.Data\\Education.Data.csproj|solutionrelative:education.data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\contenttagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\contenttagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.business\\services\\concrete\\commentlikemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|solutionrelative:education.business\\services\\concrete\\commentlikemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.business\\services\\concrete\\commentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|solutionrelative:education.business\\services\\concrete\\commentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.business\\services\\concrete\\applicationusermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7C8DE97-CBFA-472E-93BE-BECF36CFB497}|Education.Business\\Education.Business.csproj|solutionrelative:education.business\\services\\concrete\\applicationusermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7D25243-EBD4-4D81-B152-CDAD382B73C9}|Education.Entity\\Education.Entity.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.entity\\dtos\\applicationuserdto\\applicationuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7D25243-EBD4-4D81-B152-CDAD382B73C9}|Education.Entity\\Education.Entity.csproj|solutionrelative:education.entity\\dtos\\applicationuserdto\\applicationuserrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\contentusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\contentusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\commentlikecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\commentlikecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\tagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\tagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\subcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\subcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|c:\\users\\10\\desktop\\e\u011Fitim videolar\u0131 web sitesi\\backend\\education\\education.webapi\\controllers\\topiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E91A680F-69DA-4575-9581-11411E26F96A}|Education.WebApi\\Education.WebApi.csproj|solutionrelative:education.webapi\\controllers\\topiccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,93 +91,231 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ServiceResult.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Exeptions\\ServiceResult.cs",
-              "RelativeDocumentMoniker": "Education.Business\\Exeptions\\ServiceResult.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Exeptions\\ServiceResult.cs",
-              "RelativeToolTip": "Education.Business\\Exeptions\\ServiceResult.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAtAAAA",
+              "Title": "ContentRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Entity\\DTOs\\ContentDTO\\ContentRequestDto.cs",
+              "RelativeDocumentMoniker": "Education.Entity\\DTOs\\ContentDTO\\ContentRequestDto.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Entity\\DTOs\\ContentDTO\\ContentRequestDto.cs",
+              "RelativeToolTip": "Education.Entity\\DTOs\\ContentDTO\\ContentRequestDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T23:08:09.915Z",
+              "WhenOpened": "2024-10-11T02:31:32.814Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Program.cs",
-              "RelativeDocumentMoniker": "Education.WebApi\\Program.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Program.cs",
-              "RelativeToolTip": "Education.WebApi\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAABAAAA",
+              "DocumentIndex": 7,
+              "Title": "CommentLikeManager.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Services\\Concrete\\CommentLikeManager.cs",
+              "RelativeDocumentMoniker": "Education.Business\\Services\\Concrete\\CommentLikeManager.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Services\\Concrete\\CommentLikeManager.cs",
+              "RelativeToolTip": "Education.Business\\Services\\Concrete\\CommentLikeManager.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAEgAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T23:04:06.532Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T17:26:03.789Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ContentUserResponseDto.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Entity\\DTOs\\ContentUserDTO\\ContentUserResponseDto.cs",
-              "RelativeDocumentMoniker": "Education.Entity\\DTOs\\ContentUserDTO\\ContentUserResponseDto.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Entity\\DTOs\\ContentUserDTO\\ContentUserResponseDto.cs",
-              "RelativeToolTip": "Education.Entity\\DTOs\\ContentUserDTO\\ContentUserResponseDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAkAAAA",
+              "DocumentIndex": 8,
+              "Title": "CommentManager.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Services\\Concrete\\CommentManager.cs",
+              "RelativeDocumentMoniker": "Education.Business\\Services\\Concrete\\CommentManager.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Services\\Concrete\\CommentManager.cs",
+              "RelativeToolTip": "Education.Business\\Services\\Concrete\\CommentManager.cs",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAAAFAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T23:00:27.868Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ContentUserRequestDto.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Entity\\DTOs\\ContentUserDTO\\ContentUserRequestDto.cs",
-              "RelativeDocumentMoniker": "Education.Entity\\DTOs\\ContentUserDTO\\ContentUserRequestDto.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Entity\\DTOs\\ContentUserDTO\\ContentUserRequestDto.cs",
-              "RelativeToolTip": "Education.Entity\\DTOs\\ContentUserDTO\\ContentUserRequestDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T23:00:20.105Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\MappingProfiles\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "Education.Business\\MappingProfiles\\MappingProfile.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\MappingProfiles\\MappingProfile.cs",
-              "RelativeToolTip": "Education.Business\\MappingProfiles\\MappingProfile.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T22:57:47.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-11T00:29:56.49Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Education.Business",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj",
-              "RelativeDocumentMoniker": "Education.Business\\Education.Business.csproj",
-              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Education.Business.csproj",
-              "RelativeToolTip": "Education.Business\\Education.Business.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-09-26T22:57:05.851Z",
-              "EditorCaption": ""
+              "Title": "ContentManager.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Services\\Concrete\\ContentManager.cs",
+              "RelativeDocumentMoniker": "Education.Business\\Services\\Concrete\\ContentManager.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Services\\Concrete\\ContentManager.cs",
+              "RelativeToolTip": "Education.Business\\Services\\Concrete\\ContentManager.cs",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAAAG0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T00:22:20.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ApplicationUserManager.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Services\\Concrete\\ApplicationUserManager.cs",
+              "RelativeDocumentMoniker": "Education.Business\\Services\\Concrete\\ApplicationUserManager.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Business\\Services\\Concrete\\ApplicationUserManager.cs",
+              "RelativeToolTip": "Education.Business\\Services\\Concrete\\ApplicationUserManager.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAB4AAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T00:21:31.782Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RatingController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\RatingController.cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\RatingController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\RatingController.cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\RatingController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T00:16:03.34Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T00:02:31.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ApplicationUserRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Entity\\DTOs\\ApplicationUserDTO\\ApplicationUserRequestDto.cs",
+              "RelativeDocumentMoniker": "Education.Entity\\DTOs\\ApplicationUserDTO\\ApplicationUserRequestDto.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Entity\\DTOs\\ApplicationUserDTO\\ApplicationUserRequestDto.cs",
+              "RelativeToolTip": "Education.Entity\\DTOs\\ApplicationUserDTO\\ApplicationUserRequestDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T23:57:23.722Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ContentUserController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\ContentUserController.cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\ContentUserController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\ContentUserController.cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\ContentUserController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADYAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T23:47:58.002Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "Education.Data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.Data\\AppDbContext.cs",
-              "RelativeToolTip": "Education.Data\\AppDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Title": "ContentTagController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\ContentTagController.cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\ContentTagController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\ContentTagController.cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\ContentTagController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-26T22:48:08.759Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T23:46:10.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CommentController .cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\CommentController .cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\CommentController .cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\CommentController .cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\CommentController .cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T23:46:08.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CommentLikeController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\CommentLikeController.cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\CommentLikeController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\CommentLikeController.cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\CommentLikeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T23:46:07.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\appsettings.json",
+              "RelativeDocumentMoniker": "Education.WebApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\appsettings.json",
+              "RelativeToolTip": "Education.WebApi\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-10T23:45:49.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationUserController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\ApplicationUserController.cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\ApplicationUserController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\ApplicationUserController.cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\ApplicationUserController.cs",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAAAIEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T23:08:29.533Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SubCategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\SubCategoryController.cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\SubCategoryController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\SubCategoryController.cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\SubCategoryController.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACkAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T23:00:26.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "TagController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\TagController.cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\TagController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\TagController.cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\TagController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACkAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T23:00:22.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "TopicController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\TopicController.cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\TopicController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\TopicController.cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\TopicController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T23:00:20.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\CategoryController.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADYAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T22:58:04.611Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ContentController.cs",
+              "DocumentMoniker": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\ContentController.cs",
+              "RelativeDocumentMoniker": "Education.WebApi\\Controllers\\ContentController.cs",
+              "ToolTip": "C:\\Users\\10\\Desktop\\E\u011Fitim Videolar\u0131 Web Sitesi\\backend\\Education\\Education.WebApi\\Controllers\\ContentController.cs",
+              "RelativeToolTip": "Education.WebApi\\Controllers\\ContentController.cs",
+              "ViewState": "AQIAALAAAAAAAAAAAAAAAMsAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T22:18:16.626Z"
             }
           ]
         }

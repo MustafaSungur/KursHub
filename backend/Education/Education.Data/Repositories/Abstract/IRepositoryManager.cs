@@ -7,13 +7,13 @@ namespace Education.Data.Repositories.Abstract
 		ICategoryRepository CategoryRepository { get; }
 		ICommentLikeRepository CommentLikeRepository { get; }
 		IContentRepository ContentRepository { get; }
-		IRatingRepository RaitingRepository { get; }
+		IRatingRepository RatingRepository { get; }
 		ICommentRepository CommentRepository { get; }
 		ISubCategoryRepository SubCategoryRepository { get; }	
 		ITagRepository TagRepository { get; }
 		IContentTagRepository ContentTagRepository { get; }
-		ITopicRepository TopicRepository { get; }
 		IContentUserRepository ContentUserRepository { get; }
+		ITopicRepository TopicRepository { get; }
 
 		Task SaveAsync();
 	}

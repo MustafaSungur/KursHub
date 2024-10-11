@@ -29,45 +29,53 @@ namespace Education.Data.Repositories.Concrete.EfCore
 		// State Deleted olarak ayarlanıyor
 		public virtual async Task<bool> DeleteAsync(TId id)
 		{
-			var entity = await FindByCondition(e => EF.Property<TId>(e, "Id")!.Equals(id)
-													&& EF.Property<State>(e, "State") != State.Deleted).FirstOrDefaultAsync();
+			var entity = await _dbSet
+				.Where(e => EF.Property<TId>(e, "Id")!.Equals(id)
+						 && EF.Property<State>(e, "State") != State.Deleted)
+				.FirstOrDefaultAsync();
 
 			if (entity == null)
 			{
-				return false; 
+				return false;
 			}
 
 			// Entity'nin State'ini Deleted olarak işaretle
 			_context.Entry(entity).Property("State").CurrentValue = State.Deleted;
-			await _context.SaveChangesAsync(); 
+			await _context.SaveChangesAsync();
 			return true;
 		}
 
 		// Tüm kayıtları getirme işlemi, Deleted olanları dışarıda bırakıyoruz
 		public virtual IQueryable<TEntity> GetAll()
 		{
-			return FindByCondition(e => EF.Property<State>(e, "State") != State.Deleted); // Deleted olmayan kayıtlar
+			return _dbSet
+				.Where(e => EF.Property<State>(e, "State") != State.Deleted); // Deleted olmayan kayıtlar
 		}
 
 		// ID'ye göre kayıt getirme işlemi, Deleted olanları dışarıda bırakıyoruz
 		public virtual async Task<TEntity?> GetByIdAsync(TId id)
 		{
-			return await FindByCondition(e => EF.Property<TId>(e, "Id")!.Equals(id)
-											&& EF.Property<State>(e, "State") != State.Deleted).FirstOrDefaultAsync();
+			return await _dbSet
+				.Where(e => EF.Property<TId>(e, "Id")!.Equals(id)
+						 && EF.Property<State>(e, "State") != State.Deleted)
+				.FirstOrDefaultAsync();
 		}
 
 		// Entity güncelleme işlemi
 		public virtual async Task<TEntity> UpdateAsync(TEntity entity)
 		{
-			_dbSet.Update(entity); 
-			await _context.SaveChangesAsync(); 
+			_dbSet.Update(entity);
+			await _context.SaveChangesAsync();
 			return entity;
 		}
 
 		// Dinamik sorgulama işlemi, Deleted olanları dışarıda bırakıyoruz
 		public virtual IQueryable<TEntity> FindByCondition(Expression<Func<TEntity, bool>> expression)
 		{
-			return _dbSet.Where(expression).Where(e => EF.Property<State>(e, "State") != State.Deleted).AsNoTracking();
+			return _dbSet
+				.Where(expression)
+				.Where(e => EF.Property<State>(e, "State") != State.Deleted)
+				.AsNoTracking();
 		}
 	}
 }

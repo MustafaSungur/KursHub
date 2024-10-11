@@ -8,8 +8,11 @@ namespace Education.Data.Repositories.Concrete.EfCore
 	{
 		public ContentTagRepository(AppDbContext context) : base(context)
 		{
+
 		}
 
+
 		
+
 	}
 }

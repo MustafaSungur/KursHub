@@ -10,3 +10,4 @@ C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.En
 C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.Entity\obj\Debug\net8.0\refint\Education.Entity.dll
 C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.Entity\obj\Debug\net8.0\Education.Entity.pdb
 C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.Entity\obj\Debug\net8.0\ref\Education.Entity.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.Entity\obj\Debug\net8.0\Education.Entity.sourcelink.json

@@ -4,7 +4,7 @@ namespace Education.Entity.Models
 {
 	public class BaseEntity
 	{
-        public DateTime RegisterDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
 		public DateTime? UpdatedDate { get; set; }
 

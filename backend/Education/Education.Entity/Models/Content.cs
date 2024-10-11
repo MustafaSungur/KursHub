@@ -16,7 +16,9 @@ namespace Education.Entity.Models
 		[StringLength(300, ErrorMessage = "Description cannot exceed 300 characters.")]
 		public required string Description { get; set; }
 
-		public string? VideoUrl { get; set; }
+		public required string VideoUrl { get; set; }
+
+		public string? ImageUrl { get; set; }
 
 		public long ViewCount { get; set; } = 0;
 
@@ -30,22 +32,21 @@ namespace Education.Entity.Models
 
 		public List<ContentTag>? ContentTags { get; set; } 
 
-        public List<Rating>? Ratings { get; set; }
-
-		public int RaitingCount { get; set; }
-
-		public float Rating { get; set; }
+        public List<Rating>? Ratings { get; set; }		
 
 		public int TopicId { get; set; }
 
 		[ForeignKey(nameof(TopicId))]
 		public Topic? Topic { get; set; }
 
-		public int SubCategoryId { get; set; }
-
-		[ForeignKey(nameof(SubCategoryId))]
-		public SubCategory? SubCategory { get; set; }
-
         public List<ContentUser>? ViewedUsers { get; set; }
-    }
+
+        public int Duration { get; set; }
+
+        [NotMapped]
+		public int RatingCount { get; set; }
+
+		[NotMapped]
+		public float Rating { get; set; }
+	}
 }

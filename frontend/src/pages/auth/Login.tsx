@@ -21,10 +21,12 @@ export default function Login() {
       {/* Sol taraf - Login formu */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 lg:p-24">
         <div className="w-full max-w-md">
-          <div className="flex items-center justify-center mb-8">
-            <BookOpen className="h-10 w-10 text-amber-500" />
-            <span className="ml-2 text-2xl font-bold">KursHub</span>
-          </div>
+          <Link to="/">
+            <div className="flex items-center justify-center mb-8">
+              <BookOpen className="h-10 w-10 text-amber-500" />
+              <span className="ml-2 text-2xl font-bold">KursHub</span>
+            </div>
+          </Link>
           <h1 className="text-3xl font-bold mb-6">Hesabınıza Giriş Yapın</h1>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">

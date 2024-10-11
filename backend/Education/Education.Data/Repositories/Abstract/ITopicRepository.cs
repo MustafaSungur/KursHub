@@ -7,7 +7,7 @@ using Education.Entity.Models;
 
 namespace Education.Data.Repositories.Abstract
 {
-	public interface ITopicRepository : IRepositoryBase<Topic, AppDbContext, int>
+	public interface ITopicRepository: IRepositoryBase<Topic,AppDbContext,int>
 	{
 	}
 }

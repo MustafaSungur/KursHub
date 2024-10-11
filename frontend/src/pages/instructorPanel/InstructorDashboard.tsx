@@ -9,6 +9,7 @@ interface Course {
   id: number;
   title: string;
   image: string;
+  category: string;
   subcategory: string;
   tags: string[];
 }
@@ -19,63 +20,72 @@ const initialCourses: Course[] = [
     title: "React Temelleri",
     image:
       "https://images.pexels.com/photos/14207926/pexels-photo-14207926.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    subcategory: "Web Geliştirme",
+    category: "Web Geliştirme",
+    subcategory: "frontend",
     tags: ["JavaScript", "React"],
   },
   {
     id: 2,
     title: "Python ile Veri Analizi",
     image: "/placeholder.svg?height=100&width=200",
-    subcategory: "Veri Bilimi",
+    category: "Veri Bilimi",
+    subcategory: "frontend",
     tags: ["Python", "Machine Learning"],
   },
   {
     id: 3,
     title: "UI/UX Tasarım Prensipleri",
     image: "/placeholder.svg?height=100&width=200",
-    subcategory: "Tasarım",
+    category: "Tasarım",
+    subcategory: "frontend",
     tags: ["UI/UX"],
   },
   {
     id: 1,
     title: "React Temelleri",
     image: "/placeholder.svg?height=100&width=200",
-    subcategory: "Web Geliştirme",
+    category: "Web Geliştirme",
+    subcategory: "frontend",
     tags: ["JavaScript", "React"],
   },
   {
     id: 2,
     title: "Python ile Veri Analizi",
     image: "/placeholder.svg?height=100&width=200",
-    subcategory: "Veri Bilimi",
+    category: "Veri Bilimi",
+    subcategory: "frontend",
     tags: ["Python", "Machine Learning"],
   },
   {
     id: 3,
     title: "UI/UX Tasarım Prensipleri",
     image: "/placeholder.svg?height=100&width=200",
-    subcategory: "Tasarım",
+    category: "Tasarım",
+    subcategory: "frontend",
     tags: ["UI/UX"],
   },
   {
     id: 1,
     title: "React Temelleri",
     image: "/placeholder.svg?height=100&width=200",
-    subcategory: "Web Geliştirme",
+    category: "Web Geliştirme",
+    subcategory: "frontend",
     tags: ["JavaScript", "React"],
   },
   {
     id: 2,
     title: "Python ile Veri Analizi",
     image: "/placeholder.svg?height=100&width=200",
-    subcategory: "Veri Bilimi",
+    category: "Veri Bilimi",
+    subcategory: "frontend",
     tags: ["Python", "Machine Learning"],
   },
   {
     id: 3,
     title: "UI/UX Tasarım Prensipleri",
     image: "/placeholder.svg?height=100&width=200",
-    subcategory: "Tasarım",
+    category: "Tasarım",
+    subcategory: "frontend",
     tags: ["UI/UX"],
   },
 ];
@@ -107,7 +117,7 @@ export default function InstructorDashboard() {
 
   return (
     <>
-      <main className="flex-1 lg:p-8 overflow-auto ">
+      <main className="flex-1 lg:p-5 overflow-auto ">
         <div className="flex justify-between items-center lg:mx-auto lg:w-11/12 mb-10">
           <h1 className="text-2xl lg:text-3xl font-bold">Eğitimlerimi Yönet</h1>
           <Button

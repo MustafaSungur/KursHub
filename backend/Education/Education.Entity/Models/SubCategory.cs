@@ -18,6 +18,7 @@ namespace Education.Entity.Models
 		[ForeignKey(nameof(CategoryId))]
 		public Category? Category { get; set; }
 
-		public List<Content>? Contents { get; set; }
+		public List<Topic>? Topics { get; set; }
+
 	}
 }

@@ -37,6 +37,9 @@ namespace Education.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("text");
@@ -51,6 +54,10 @@ namespace Education.Data.Migrations
 
                     b.Property<int>("Gender")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -79,9 +86,6 @@ namespace Education.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
-
-                    b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("Role")
                         .HasColumnType("integer");
@@ -122,13 +126,13 @@ namespace Education.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("State")
                         .HasColumnType("integer");
@@ -152,13 +156,13 @@ namespace Education.Data.Migrations
                     b.Property<long>("ContentId")
                         .HasColumnType("bigint");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("State")
                         .HasColumnType("integer");
@@ -181,18 +185,27 @@ namespace Education.Data.Migrations
 
             modelBuilder.Entity("Education.Entity.Models.CommentLike", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<long>("CommentId")
                         .HasColumnType("bigint");
 
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
+                    b.Property<int>("State")
+                        .HasColumnType("integer");
 
-                    b.HasKey("UserId", "CommentId");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("CommentId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("CommentLikes");
                 });
@@ -205,24 +218,21 @@ namespace Education.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("text");
 
-                    b.Property<int>("RaitingCount")
+                    b.Property<int>("Duration")
                         .HasColumnType("integer");
 
-                    b.Property<float>("Rating")
-                        .HasColumnType("real");
-
-                    b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
 
                     b.Property<int>("State")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("SubCategoryId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Title")
@@ -241,14 +251,13 @@ namespace Education.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("VideoUrl")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<long>("ViewCount")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SubCategoryId");
 
                     b.HasIndex("TopicId");
 
@@ -265,7 +274,7 @@ namespace Education.Data.Migrations
                     b.Property<int>("TagId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("RegisterDate")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("State")
@@ -289,7 +298,7 @@ namespace Education.Data.Migrations
                     b.Property<long>("ContentId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("RegisterDate")
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("State")
@@ -316,11 +325,11 @@ namespace Education.Data.Migrations
                     b.Property<long>("ContentId")
                         .HasColumnType("bigint");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("RatingValue")
                         .HasColumnType("integer");
-
-                    b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -346,13 +355,13 @@ namespace Education.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("State")
                         .HasColumnType("integer");
@@ -375,13 +384,13 @@ namespace Education.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("State")
                         .HasColumnType("integer");
@@ -402,21 +411,26 @@ namespace Education.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("RegisterDate")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<int>("State")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SubCategoryId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SubCategoryId");
 
                     b.ToTable("Topics");
                 });
@@ -593,12 +607,6 @@ namespace Education.Data.Migrations
 
             modelBuilder.Entity("Education.Entity.Models.Content", b =>
                 {
-                    b.HasOne("Education.Entity.Models.SubCategory", "SubCategory")
-                        .WithMany("Contents")
-                        .HasForeignKey("SubCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Education.Entity.Models.Topic", "Topic")
                         .WithMany("Contents")
                         .HasForeignKey("TopicId")
@@ -612,8 +620,6 @@ namespace Education.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("CreatedUser");
-
-                    b.Navigation("SubCategory");
 
                     b.Navigation("Topic");
                 });
@@ -684,6 +690,17 @@ namespace Education.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Education.Entity.Models.Topic", b =>
+                {
+                    b.HasOne("Education.Entity.Models.SubCategory", "SubCategory")
+                        .WithMany("Topics")
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SubCategory");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -767,7 +784,7 @@ namespace Education.Data.Migrations
 
             modelBuilder.Entity("Education.Entity.Models.SubCategory", b =>
                 {
-                    b.Navigation("Contents");
+                    b.Navigation("Topics");
                 });
 
             modelBuilder.Entity("Education.Entity.Models.Tag", b =>

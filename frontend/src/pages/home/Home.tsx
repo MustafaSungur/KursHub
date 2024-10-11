@@ -9,6 +9,88 @@ import {
 import { Users, Star, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import bgVideo from "../../assets/bgvideo.webm";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { Badge } from "@/components/ui/badge";
+
+const courses = [
+  {
+    id: 1,
+    title: "React'e Giriş",
+    description:
+      "React'in temellerini öğrenin ve modern web uygulamaları oluşturun.",
+    instructor: "Ayşe Yılmaz",
+    students: 1234,
+    rating: 4.8,
+    duration: "10 saat",
+    category: "Web Geliştirme",
+    topics: ["JavaScript", "React", "Frontend"],
+    image:
+      "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    id: 2,
+    title: "İleri Seviye JavaScript Teknikleri",
+    description: "JavaScript programlamada ileri düzey kavramları öğrenin.",
+    instructor: "Mehmet Kaya",
+    students: 987,
+    rating: 4.9,
+    duration: "15 saat",
+    category: "Programlama",
+    topics: ["JavaScript", "ES6+", "Algoritmalar"],
+    image: "/placeholder.svg?height=400&width=600",
+  },
+  {
+    id: 3,
+    title: "UI/UX Tasarım Temelleri",
+    description: "Güzel ve işlevsel kullanıcı arayüzleri oluşturun.",
+    instructor: "Zeynep Demir",
+    students: 2345,
+    rating: 4.7,
+    duration: "12 saat",
+    category: "Tasarım",
+    topics: ["UI", "UX", "Figma"],
+    image:
+      "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    id: 4,
+    title: "Python ile Veri Bilimi",
+    description: "Python kullanarak veri analizi ve makine öğrenimi keşfedin.",
+    instructor: "Ali Öztürk",
+    students: 1876,
+    rating: 4.6,
+    duration: "20 saat",
+    category: "Veri Bilimi",
+    topics: ["Python", "Makine Öğrenimi", "İstatistik"],
+    image: "/placeholder.svg?height=400&width=600",
+  },
+  {
+    id: 5,
+    title: "Flutter ile Mobil Uygulama Geliştirme",
+    description:
+      "Flutter framework ile çapraz platform mobil uygulamalar oluşturun.",
+    instructor: "Elif Yıldız",
+    students: 1543,
+    rating: 4.8,
+    duration: "18 saat",
+    category: "Mobil Geliştirme",
+    topics: ["Flutter", "Dart", "Mobil"],
+    image: "/placeholder.svg?height=400&width=600",
+  },
+  {
+    id: 6,
+    title: "DevOps Temelleri",
+    description: "DevOps uygulamalarının prensiplerini ve araçlarını öğrenin.",
+    instructor: "Mustafa Şahin",
+    students: 987,
+    rating: 4.7,
+    duration: "14 saat",
+    category: "DevOps",
+    topics: ["CI/CD", "Docker", "Kubernetes"],
+    image: "/placeholder.svg?height=400&width=600",
+  },
+];
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -51,40 +133,59 @@ export default function Home() {
 
         <section className="w-full py-12 md:py-24 lg:py-32 ">
           <div className="container px-4 md:px-6 mx-auto  ">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
+            <h2 className="text-3xl text-zinc-600 font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
               Öne Çıkan Eğitimler
             </h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {[1, 2, 3].map((course) => (
-                <Card key={course} className="flex flex-col">
+              {courses.map((course) => (
+                <Card key={course.id} className="flex flex-col">
                   <img
-                    src={`/placeholder.svg?height=200&width=400&text=Kurs+${course}`}
-                    alt={`Kurs ${course}`}
-                    className="w-full h-48 object-cover"
+                    src={course.image}
+                    alt={course.title}
+                    className="w-full h-48 object-cover rounded-t-md"
                   />
                   <CardHeader>
-                    <CardTitle>Eğitim Başlığı {course}</CardTitle>
+                    <CardTitle>{course.title}</CardTitle>
                   </CardHeader>
                   <CardContent className="flex-grow">
+                    <div className="flex items-center space-x-2 text-sm text-gray-600 mb-2">
+                      <Avatar className="h-8 w-8">
+                        <AvatarImage
+                          src={`/placeholder.svg?height=32&width=32`}
+                          alt={course.instructor}
+                        />
+                        <AvatarFallback>{course.instructor[0]}</AvatarFallback>
+                      </Avatar>
+                      <span>{course.instructor}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {course.topics.map((topic: string) => (
+                        <Badge key={topic} variant="secondary">
+                          {topic}
+                        </Badge>
+                      ))}
+                    </div>
                     <div className="flex justify-between text-sm text-gray-600">
                       <div className="flex items-center">
                         <Users className="h-4 w-4 mr-1" />
-                        <span>1000+ öğrenci</span>
+                        <span>{course.students} Değerlendirme</span>
                       </div>
                       <div className="flex items-center">
                         <Star className="h-4 w-4 mr-1 fill-yellow-400 text-yellow-400" />
-                        <span>4.8</span>
+                        <span>{course.rating}</span>
                       </div>
                       <div className="flex items-center">
                         <Clock className="h-4 w-4 mr-1" />
-                        <span>20 saat</span>
+                        <span>{course.duration}</span>
                       </div>
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full bg-amber-500 hover:bg-amber-600 text-slate-100">
-                      Eğitime Git
-                    </Button>
+                    <Link to="/courses/5" className="w-full">
+                      <Button className="w-full bg-amber-500 hover:bg-amber-600 text-slate-100 text-base rounded-xl">
+                        Şimdi İzle
+                      </Button>
+                    </Link>
                   </CardFooter>
                 </Card>
               ))}
@@ -93,7 +194,7 @@ export default function Home() {
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
           <div className="container px-4 md:px-6 mx-auto">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
+            <h2 className="text-3xl text-zinc-600 font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
               Neden KursHub?
             </h2>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

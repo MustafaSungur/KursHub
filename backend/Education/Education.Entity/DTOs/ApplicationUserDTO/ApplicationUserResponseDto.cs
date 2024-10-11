@@ -1,12 +1,12 @@
 ﻿using System;
-
+using Education.Entity.DTOs.TagDTO;
 using Education.Entity.Enums;
 
 namespace Education.Entity.DTOs.ApplicationUserDTO
 {
 	public class ApplicationUserResponseDto
 	{
-		public required string Id { get; set; } // Kullanıcının IdentityUser Id'si
+		public required string Id { get; set; }
 
 		public required string FirstName { get; set; }
 
@@ -26,5 +26,8 @@ namespace Education.Entity.DTOs.ApplicationUserDTO
 		
 		public required UserRole Role { get; set; }
 
-	}
+		public required string Image { get; set; }
+
+
+    }
 }

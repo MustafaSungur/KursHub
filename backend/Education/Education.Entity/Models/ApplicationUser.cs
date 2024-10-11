@@ -23,13 +23,15 @@ namespace Education.Entity.Models
 		[Required(ErrorMessage = "Birth date is required.")]
 		[DataType(DataType.Date)]
 		public required DateTime BirthDate { get; set; }
-
-		public DateTime RegisterDate { get; set; } = DateTime.Now;
+					
+		public DateTime CreatedDate { get; set; } =  DateTime.UtcNow;
 
 		public DateTime? UpdatedDate { get; set; }
 
 		// State field, defaulting to Active
 		public State State { get; set; } = State.Active;
+
+		public string Image { get; set; } = string.Empty;
 
 		[NotMapped]
 		[DataType(DataType.Password)]
@@ -46,5 +48,7 @@ namespace Education.Entity.Models
 
 		public List<ContentUser>? ViewedContents{ get; set; }
 
-	}
+		[NotMapped]
+		public List<Tag> Tags { get; set; } = [];
+    }
 }

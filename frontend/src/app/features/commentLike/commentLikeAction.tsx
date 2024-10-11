@@ -1,0 +1,26 @@
+import { createCommentLike, deleteCommentLike } from "@/api/commentLike";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+
+export const createCommentLikeAction = createAsyncThunk(
+  "comment/createCommentLike",
+  async (commentLike, { rejectWithValue }) => {
+    try {
+      const response = await createCommentLike(commentLike);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteCommentLikeAction = createAsyncThunk(
+  "comment/deleteCommentLike",
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const response = await deleteCommentLike(id);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);

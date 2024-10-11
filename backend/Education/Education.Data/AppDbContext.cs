@@ -20,6 +20,7 @@ namespace Education.Data
 		public DbSet<SubCategory> SubCategories { get; set; }
 		public DbSet<Tag> Tags { get; set; }
 		public DbSet<Topic> Topics { get; set; }
+	
 
 		// ContentUser DbSet tanımlaması
 		public DbSet<ContentUser> ContentUsers { get; set; }
@@ -41,9 +42,6 @@ namespace Education.Data
 			}
 
 			// Fluent API ile ilişkiler
-			modelBuilder.Entity<CommentLike>()
-				.HasKey(cl => new { cl.UserId, cl.CommentId });
-
 			modelBuilder.Entity<ContentTag>()
 				.HasKey(ct => new { ct.ContentId, ct.TagId });
 
@@ -71,7 +69,7 @@ namespace Education.Data
 				.OnDelete(DeleteBehavior.Cascade);
 
 			modelBuilder.Entity<SubCategory>()
-				.HasMany(sc => sc.Contents)
+				.HasMany(sc => sc.Topics)
 				.WithOne(c => c.SubCategory)
 				.HasForeignKey(c => c.SubCategoryId)
 				.OnDelete(DeleteBehavior.Cascade);
@@ -82,11 +80,6 @@ namespace Education.Data
 				.HasForeignKey(sc => sc.CategoryId)
 				.OnDelete(DeleteBehavior.Cascade);
 
-			modelBuilder.Entity<Topic>()
-				.HasMany(t => t.Contents)
-				.WithOne(c => c.Topic)
-				.HasForeignKey(c => c.TopicId)
-				.OnDelete(DeleteBehavior.Cascade);
 
 			modelBuilder.Entity<Comment>()
 				.HasOne(c => c.Content)

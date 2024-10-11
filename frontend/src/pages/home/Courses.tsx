@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -32,6 +31,7 @@ import {
   ChevronRight,
   ChevronDown,
   ChevronUp,
+  BookOpen,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -46,6 +46,7 @@ const courses = [
     rating: 4.8,
     duration: "10 saat",
     category: "Web Geliştirme",
+    subCategory: "Frontend",
     topics: ["JavaScript", "React", "Frontend"],
     image:
       "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -59,6 +60,7 @@ const courses = [
     rating: 4.9,
     duration: "15 saat",
     category: "Programlama",
+    subCategory: "JavaScript",
     topics: ["JavaScript", "ES6+", "Algoritmalar"],
     image: "/placeholder.svg?height=400&width=600",
   },
@@ -71,6 +73,7 @@ const courses = [
     rating: 4.7,
     duration: "12 saat",
     category: "Tasarım",
+    subCategory: "UI/UX",
     topics: ["UI", "UX", "Figma"],
     image:
       "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -84,9 +87,11 @@ const courses = [
     rating: 4.6,
     duration: "20 saat",
     category: "Veri Bilimi",
+    subCategory: "Makine Öğrenimi",
     topics: ["Python", "Makine Öğrenimi", "İstatistik"],
     image: "/placeholder.svg?height=400&width=600",
   },
+
   {
     id: 5,
     title: "Flutter ile Mobil Uygulama Geliştirme",
@@ -229,6 +234,12 @@ const courses = [
   },
 ];
 
+// Tüm alt kategorileri ayarlayın
+const subCategories = Array.from(
+  new Set(courses.map((course) => course.subCategory).filter(Boolean))
+);
+
+// Tüm konular (topics) ve kategoriler
 const allTopics = Array.from(
   new Set(courses.flatMap((course) => course.topics))
 );
@@ -236,21 +247,33 @@ const categories = Array.from(
   new Set(courses.map((course) => course.category))
 );
 
-export default function Test() {
+export default function Courses() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("Tümü");
-  const [topicFilters, setTopicFilters] = useState<string[]>([]);
+  const [categoryFilter, setCategoryFilter] = useState("all");
+  const [subCategoryFilter, setSubCategoryFilter] = useState("all");
+  const [tagFilters, setTagFilters] = useState<string[]>([]);
+  const [topicFilter, setTopicFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const [isTopicsOpen, setIsTopicsOpen] = useState(false);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+  const [tagSearchTerm, setTagSearchTerm] = useState("");
   const coursesPerPage = 12;
 
-  const filteredCourses = courses.filter(
-    (course) =>
-      course.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (categoryFilter === "Tümü" || course.category === categoryFilter) &&
-      (topicFilters.length === 0 ||
-        topicFilters.some((topic) => course.topics.includes(topic)))
-  );
+  const availableTopics = useMemo(() => {
+    return Array.from(new Set(courses.map((course) => course.category)));
+  }, []);
+
+  const filteredCourses = useMemo(() => {
+    return courses.filter(
+      (course) =>
+        course.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (categoryFilter === "all" || course.category === categoryFilter) &&
+        (subCategoryFilter === "all" ||
+          course.subCategory === subCategoryFilter) &&
+        (topicFilter === "all" || course.category === topicFilter) &&
+        (tagFilters.length === 0 ||
+          tagFilters.some((tag) => course.topics.includes(tag)))
+    );
+  }, [searchTerm, categoryFilter, subCategoryFilter, topicFilter, tagFilters]);
 
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
@@ -260,17 +283,28 @@ export default function Test() {
   );
   const totalPages = Math.ceil(filteredCourses.length / coursesPerPage);
 
-  const handleTopicToggle = (topic: string) => {
-    setTopicFilters((prev) =>
-      prev.includes(topic) ? prev.filter((t) => t !== topic) : [...prev, topic]
+  const handleTagToggle = (tag: string) => {
+    setTagFilters((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
     );
     setCurrentPage(1);
   };
 
+  useEffect(() => {
+    setSubCategoryFilter("all");
+    setTopicFilter("all");
+    setCurrentPage(1);
+  }, [categoryFilter]);
+
+  useEffect(() => {
+    setTopicFilter("all");
+    setCurrentPage(1);
+  }, [subCategoryFilter]);
+
   return (
-    <div className="flex flex-col min-h-screen lg:w-10/12 mx-auto w-10/12">
+    <div className="flex flex-col min-h-screen lg:w-11/12 mx-auto w-11/12">
       <main className="flex-1 flex">
-        <aside className="w-64 bg-gray-100 p-4 hidden lg:block sticky top-14 h-[calc(100vh-3.5rem)] overflow-y-auto mt-24">
+        <aside className="w-72 bg-gray-100 p-4 hidden lg:block sticky top-14 h-screen overflow-y-auto mt-12">
           <div className="space-y-4">
             <Input
               placeholder="Kurs ara"
@@ -285,6 +319,8 @@ export default function Test() {
               value={categoryFilter}
               onValueChange={(value) => {
                 setCategoryFilter(value);
+                setSubCategoryFilter("all");
+                setTopicFilter("all");
                 setCurrentPage(1);
               }}
             >
@@ -292,7 +328,7 @@ export default function Test() {
                 <SelectValue placeholder="Kategori" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="Tümü">Tüm Kategoriler</SelectItem>
+                <SelectItem value="all">Tüm Kategoriler</SelectItem>
                 {categories.map((category) => (
                   <SelectItem key={category} value={category}>
                     {category}
@@ -300,23 +336,86 @@ export default function Test() {
                 ))}
               </SelectContent>
             </Select>
-            <div className="space-y-2">
-              <h3 className="font-semibold">Konular</h3>
-              {allTopics.map((topic) => (
-                <div key={topic} className="flex items-center space-x-2">
-                  <Checkbox
-                    id={topic}
-                    checked={topicFilters.includes(topic)}
-                    onCheckedChange={() => handleTopicToggle(topic)}
-                  />
-                  <label
-                    htmlFor={topic}
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
+            <Select
+              value={subCategoryFilter}
+              onValueChange={(value) => {
+                setSubCategoryFilter(value);
+                setTopicFilter("all");
+                setCurrentPage(1);
+              }}
+              disabled={categoryFilter === "all"}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Alt Kategori" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Tüm Alt Kategoriler</SelectItem>
+                {subCategories
+                  .filter(
+                    (subCategory) =>
+                      categoryFilter === "all" ||
+                      courses.some(
+                        (course) =>
+                          course.category === categoryFilter &&
+                          course.subCategory === subCategory
+                      )
+                  )
+                  .map((subCategory) => (
+                    <SelectItem key={subCategory} value={subCategory}>
+                      {subCategory}
+                    </SelectItem>
+                  ))}
+              </SelectContent>
+            </Select>
+            <Select
+              value={topicFilter}
+              onValueChange={(value) => {
+                setTopicFilter(value);
+                setCurrentPage(1);
+              }}
+              disabled={subCategoryFilter === "all"}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Konu" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Tüm Konular</SelectItem>
+                {availableTopics.map((topic) => (
+                  <SelectItem key={topic} value={topic}>
                     {topic}
-                  </label>
-                </div>
-              ))}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <div className="space-y-2">
+              <h3 className="font-semibold">Etiketler</h3>
+              <Input
+                placeholder="Etiket ara"
+                type="search"
+                value={tagSearchTerm}
+                onChange={(e) => setTagSearchTerm(e.target.value)}
+              />
+              <div className="max-h-96 overflow-y-auto">
+                {allTopics
+                  .filter((tag) =>
+                    tag.toLowerCase().includes(tagSearchTerm.toLowerCase())
+                  )
+                  .map((tag) => (
+                    <div key={tag} className="flex items-center space-x-2 py-1">
+                      <Checkbox
+                        id={tag}
+                        checked={tagFilters.includes(tag)}
+                        onCheckedChange={() => handleTagToggle(tag)}
+                      />
+                      <label
+                        htmlFor={tag}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        {tag}
+                      </label>
+                    </div>
+                  ))}
+              </div>
             </div>
           </div>
         </aside>
@@ -326,14 +425,14 @@ export default function Test() {
               Eğitimleri Keşfet
             </h1>
             <div className="lg:hidden mb-4">
-              <Collapsible open={isTopicsOpen} onOpenChange={setIsTopicsOpen}>
+              <Collapsible open={isFiltersOpen} onOpenChange={setIsFiltersOpen}>
                 <CollapsibleTrigger asChild>
                   <Button
                     variant="outline"
                     className="w-full flex justify-between items-center"
                   >
                     Filtreler
-                    {isTopicsOpen ? (
+                    {isFiltersOpen ? (
                       <ChevronUp className="h-4 w-4" />
                     ) : (
                       <ChevronDown className="h-4 w-4" />
@@ -354,6 +453,8 @@ export default function Test() {
                     value={categoryFilter}
                     onValueChange={(value) => {
                       setCategoryFilter(value);
+                      setSubCategoryFilter("all");
+                      setTopicFilter("all");
                       setCurrentPage(1);
                     }}
                   >
@@ -361,7 +462,7 @@ export default function Test() {
                       <SelectValue placeholder="Kategori" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Tümü">Tüm Kategoriler</SelectItem>
+                      <SelectItem value="all">Tüm Kategoriler</SelectItem>
                       {categories.map((category) => (
                         <SelectItem key={category} value={category}>
                           {category}
@@ -369,23 +470,91 @@ export default function Test() {
                       ))}
                     </SelectContent>
                   </Select>
-                  <div className="space-y-2">
-                    <h3 className="font-semibold">Konular</h3>
-                    {allTopics.map((topic) => (
-                      <div key={topic} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={`mobile-${topic}`}
-                          checked={topicFilters.includes(topic)}
-                          onCheckedChange={() => handleTopicToggle(topic)}
-                        />
-                        <label
-                          htmlFor={`mobile-${topic}`}
-                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
+                  <Select
+                    value={subCategoryFilter}
+                    onValueChange={(value) => {
+                      setSubCategoryFilter(value);
+                      setTopicFilter("all");
+                      setCurrentPage(1);
+                    }}
+                    disabled={categoryFilter === "all"}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Alt Kategori" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Tüm Alt Kategoriler</SelectItem>
+                      {subCategories
+                        .filter(
+                          (subCategory) =>
+                            categoryFilter === "all" ||
+                            courses.some(
+                              (course) =>
+                                course.category === categoryFilter &&
+                                course.subCategory === subCategory
+                            )
+                        )
+                        .map((subCategory) => (
+                          <SelectItem key={subCategory} value={subCategory}>
+                            {subCategory}
+                          </SelectItem>
+                        ))}
+                    </SelectContent>
+                  </Select>
+                  <Select
+                    value={topicFilter}
+                    onValueChange={(value) => {
+                      setTopicFilter(value);
+                      setCurrentPage(1);
+                    }}
+                    disabled={subCategoryFilter === "all"}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Konu" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Tüm Konular</SelectItem>
+                      {availableTopics.map((topic) => (
+                        <SelectItem key={topic} value={topic}>
                           {topic}
-                        </label>
-                      </div>
-                    ))}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <div className="space-y-2">
+                    <h3 className="font-semibold">Etiketler</h3>
+                    <Input
+                      placeholder="Etiket ara"
+                      type="search"
+                      value={tagSearchTerm}
+                      onChange={(e) => setTagSearchTerm(e.target.value)}
+                    />
+                    <div className="max-h-60 overflow-y-auto">
+                      {allTopics
+                        .filter((tag) =>
+                          tag
+                            .toLowerCase()
+                            .includes(tagSearchTerm.toLowerCase())
+                        )
+                        .map((tag) => (
+                          <div
+                            key={tag}
+                            className="flex items-center space-x-2 py-1"
+                          >
+                            <Checkbox
+                              id={`mobile-${tag}`}
+                              checked={tagFilters.includes(tag)}
+                              onCheckedChange={() => handleTagToggle(tag)}
+                            />
+                            <label
+                              htmlFor={`mobile-${tag}`}
+                              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                            >
+                              {tag}
+                            </label>
+                          </div>
+                        ))}
+                    </div>
                   </div>
                 </CollapsibleContent>
               </Collapsible>
@@ -436,7 +605,7 @@ export default function Test() {
                   </CardContent>
                   <CardFooter>
                     <Link to="5" className="w-full">
-                      <Button className="w-full bg-amber-500 hover:bg-amber-600 text-slate-100 text-base rounded-xl">
+                      <Button className="w-full bg-amber-500  hover:bg-amber-600 text-slate-100 text-base rounded-xl">
                         Şimdi İzle
                       </Button>
                     </Link>
@@ -472,8 +641,20 @@ export default function Test() {
               </div>
             )}
           </div>
+          {filteredCourses.length === 0 && (
+            <div className="text-center py-12">
+              <BookOpen className="mx-auto h-12 w-12 text-gray-400" />
+              <h2 className="mt-2 text-lg font-medium text-gray-900">
+                Kurs bulunamadı
+              </h2>
+              <p className="mt-1 text-sm text-gray-500">
+                Farklı bir arama terimi veya kategori deneyin.
+              </p>
+            </div>
+          )}
         </section>
       </main>
+
       <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
         <p className="text-xs text-gray-500">
           © 2024 KursHub. Tüm hakları saklıdır.
