@@ -1,4 +1,5 @@
 ﻿using Education.Business.Core.@abstract;
+using Education.Entity.DTOs.LoginDTO;
 using Education.Entity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,13 +22,13 @@ namespace Education.WebApi.Controllers
 		}
 
 		[HttpPost("Login")]
-		public async Task<IActionResult> Login(string email, string password)
+		public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequest)
 		{
 			try
 			{
-				var applicationUser = await _userManager.FindByEmailAsync(email);
+				var applicationUser = await _userManager.FindByEmailAsync(loginRequest.Email);
 
-				if (applicationUser != null && await _userManager.CheckPasswordAsync(applicationUser, password))
+				if (applicationUser != null && await _userManager.CheckPasswordAsync(applicationUser, loginRequest.Password))
 				{
 					var token = await _tokenService.GenerateToken(applicationUser);
 					return Ok(new
@@ -44,6 +45,7 @@ namespace Education.WebApi.Controllers
 				return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while processing your request.");
 			}
 		}
+
 
 		[HttpPost("ForgetPassword")]
 		public async Task<ActionResult<string>> ForgetPassword(string email)

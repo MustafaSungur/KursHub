@@ -20,7 +20,8 @@ namespace Education.Entity.Models
 
 		public string? ImageUrl { get; set; }
 
-		public long ViewCount { get; set; } = 0;
+		[NotMapped] 
+		public long ViewCount => ViewedUsers?.Count ?? 0; 
 
 		[Required(ErrorMessage = "UserId is required.")]
 		public required string UserId { get; set; }
@@ -48,5 +49,6 @@ namespace Education.Entity.Models
 
 		[NotMapped]
 		public float Rating { get; set; }
+
 	}
 }

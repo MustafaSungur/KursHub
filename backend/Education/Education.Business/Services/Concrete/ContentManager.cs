@@ -3,7 +3,9 @@ using Education.Business.Exeptions;
 using Education.Business.Services.Abstract;
 using Education.Data.Repositories.Abstract;
 using Education.Entity.DTOs.ContentDTO;
+using Education.Entity.DTOs.ContentFilterRequestDTO;
 using Education.Entity.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Education.Business.Services.Concrete
 {
@@ -18,20 +20,23 @@ namespace Education.Business.Services.Concrete
 			_mapper = mapper;
 		}
 
-		// GetTopContents servisi, repository ile veriyi alıp iş mantığını uygular
-		public async Task<ServiceResult<IEnumerable<Content>>> GetTopContents(int pageNumber, int pageSize)
+		// En yüksek puanlı içerikleri sayfa numarasına ve sayfa boyutuna göre getirir.
+		public async Task<ServiceResult<IEnumerable<ContentResponseDto>>> GetTopContents(int pageNumber, int pageSize)
 		{
 			try
 			{
 				var contents = await _repositoryManager.ContentRepository.GetTopContents(pageNumber, pageSize);
-				return ServiceResult<IEnumerable<Content>>.SuccessResult(contents);
+				var contentsDto = contents.Select(_mapper.Map<ContentResponseDto>).ToList();
+
+				return ServiceResult<IEnumerable<ContentResponseDto>>.SuccessResult(contentsDto);
 			}
 			catch (Exception ex)
 			{
-				return ServiceResult<IEnumerable<Content>>.FailureResult($"An error occurred while fetching top contents: {ex.Message}");
+				return ServiceResult<IEnumerable<ContentResponseDto>>.FailureResult($"En yüksek puanlı içerikleri getirirken bir hata oluştu: {ex.Message}");
 			}
 		}
 
+		// ID'ye göre içerik detaylarını getirir.
 		public async Task<ServiceResult<ContentResponseDto>> GetContentByIdAsync(long id)
 		{
 			try
@@ -51,21 +56,19 @@ namespace Education.Business.Services.Concrete
 			}
 		}
 
+		// Yeni bir içerik oluşturur ve veritabanına kaydeder.
 		public async Task<ServiceResult<ContentResponseDto>> CreateContentAsync(ContentRequestDto contentRequestDto)
 		{
 			try
 			{
-				// Etiket sayısının 1 ile 3 arasında olduğunu kontrol et
 				if (contentRequestDto.TagIds.Count < 1 || contentRequestDto.TagIds.Count > 3)
 				{
 					return ServiceResult<ContentResponseDto>.FailureResult("Etiket sayısı en az 1 en fazla 3 olabilir");
 				}
 
-				// İçeriği Content entity'sine dönüştür
 				var content = _mapper.Map<Content>(contentRequestDto);
 				content.ImageUrl = contentRequestDto.ImageUrl ?? string.Empty;
 
-				// İçeriği veritabanına kaydet
 				var createdContent = await _repositoryManager.ContentRepository.CreateAsync(content);
 
 				createdContent.Rating = 0;
@@ -77,21 +80,18 @@ namespace Education.Business.Services.Concrete
 					var contentTag = new ContentTag { ContentId = createdContent.Id, TagId = tagID };
 					var createdContentTag = await _repositoryManager.ContentTagRepository.CreateAsync(contentTag);
 				}
-							
-				// İçerik bilgilerini ContentResponseDto'ya dönüştür
+
 				var contentResponseDto = _mapper.Map<ContentResponseDto>(createdContent);
 
 				return ServiceResult<ContentResponseDto>.SuccessResult(contentResponseDto);
 			}
 			catch (Exception ex)
 			{
-				// Hata durumunda hata mesajı ile birlikte başarısız sonucu döndür
 				return ServiceResult<ContentResponseDto>.FailureResult($"İçerik oluşturulurken bir hata oluştu: {ex.Message}");
 			}
 		}
 
-
-
+		// Var olan bir içeriği günceller.
 		public async Task<ServiceResult<ContentResponseDto>> UpdateContentAsync(int id, ContentRequestDto contentRequestDto)
 		{
 			try
@@ -102,7 +102,6 @@ namespace Education.Business.Services.Concrete
 					return ServiceResult<ContentResponseDto>.FailureResult("İçerik bulunamadı.");
 				}
 
-				
 				existingContent.Title = contentRequestDto.Title ?? existingContent.Title;
 				existingContent.Description = contentRequestDto.Description ?? existingContent.Description;
 				existingContent.ImageUrl = contentRequestDto.ImageUrl ?? existingContent.ImageUrl;
@@ -119,6 +118,7 @@ namespace Education.Business.Services.Concrete
 			}
 		}
 
+		// ID'ye göre içeriği siler.
 		public async Task<ServiceResult<bool>> DeleteContentAsync(long id)
 		{
 			try
@@ -136,6 +136,52 @@ namespace Education.Business.Services.Concrete
 			{
 				return ServiceResult<bool>.FailureResult($"İçerik silinirken bir hata oluştu: {ex.Message}");
 			}
+		}
+
+		// İçerikleri filtre kriterlerine göre getirir.
+		public async Task<ServiceResult<IEnumerable<ContentResponseDto>>> FilterContents(ContentFilterRequestDto filterRequest)
+		{
+			var query = _repositoryManager.ContentRepository.GetAll();
+
+			// Kategori filtresi
+			if (filterRequest.CategoryId.HasValue)
+			{
+				query = query.Where(c => c.Topic!.SubCategory!.CategoryId == filterRequest.CategoryId.Value);
+			}
+
+			// Alt kategori filtresi
+			if (filterRequest.SubCategoryId.HasValue)
+			{
+				query = query.Where(c => c.Topic!.SubCategoryId == filterRequest.SubCategoryId.Value);
+			}
+
+			// Konu filtresi
+			if (filterRequest.TopicId.HasValue)
+			{
+				query = query.Where(c => c.TopicId == filterRequest.TopicId.Value);
+			}
+
+			// Etiket filtresi
+			if (filterRequest.TagIds != null && filterRequest.TagIds.Count != 0)
+			{
+				query = query.Where(c => c.ContentTags!.Any(ct => filterRequest.TagIds.Contains(ct.TagId)));
+			}
+
+			// Arama filtresi (Title'a göre arama yap)
+			if (!string.IsNullOrEmpty(filterRequest.SearchTerm))
+			{
+				query = query.Where(c => c.Title.Contains(filterRequest.SearchTerm));
+			}
+
+			// Sayfalama ve listeye dönüştürme işlemi
+			var contents = await query
+				.Skip((filterRequest.PageNumber - 1) * filterRequest.PageSize)
+				.Take(filterRequest.PageSize)
+				.ToListAsync();
+
+			var contentDtos = contents.Select(_mapper.Map<ContentResponseDto>).ToList();
+
+			return ServiceResult<IEnumerable<ContentResponseDto>>.SuccessResult(contentDtos);
 		}
 
 	}

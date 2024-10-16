@@ -1,23 +1,39 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/app/store";
+import { loginUser } from "@/app/features/auth/authActions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BookOpen, Mail, Lock } from "lucide-react";
-import view from "../../assets/2.jpg";
-import { Link } from "react-router-dom";
+import view from "../../assets/2-min.jpg";
+import { Link, useNavigate } from "react-router-dom";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import ErrorMessage from "@/components/ErrorMessage";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const { loading, error } = useSelector((state: RootState) => state.auth);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Burada login işlemleri yapılacak
-    console.log("Login attempt with:", email, password);
+    try {
+      await dispatch(loginUser({ email, password })).unwrap();
+      navigate("/courses"); // Redirect to home page after successful login
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
 
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen lg:w-10/12 lg:m-auto">
       {/* Sol taraf - Login formu */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 lg:p-24">
         <div className="w-full max-w-md">
@@ -66,6 +82,7 @@ export default function Login() {
               Giriş Yap
             </Button>
           </form>
+          {error && <ErrorMessage message={error} />}
           <div className="mt-6 text-center">
             <a href="#" className="text-sm text-amber-600 hover:underline">
               Şifrenizi mi unuttunuz?

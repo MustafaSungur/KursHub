@@ -2,17 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createRatingAction } from "./ratingAction";
 
 interface ContentsState {
-  loading: boolean;
-  error: string | null;
-  success: boolean;
-  data: any;
+  ratingLoading: boolean;
+  ratingError: string | null;
+  ratingSuccess: boolean;
+  ratingData: any;
 }
 
 const initialState: ContentsState = {
-  loading: false,
-  error: null,
-  success: false,
-  data: [],
+  ratingLoading: false,
+  ratingError: null,
+  ratingSuccess: false,
+  ratingData: [],
 };
 const contentsSlice = createSlice({
   name: "contents",
@@ -21,19 +21,19 @@ const contentsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(createRatingAction.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.success = false;
+        state.ratingLoading = true;
+        state.ratingError = null;
+        state.ratingSuccess = false;
       })
       .addCase(createRatingAction.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
-        state.data = action.payload;
+        state.ratingLoading = false;
+        state.ratingSuccess = true;
+        state.ratingData = action.payload;
       })
       .addCase(createRatingAction.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.success = false;
+        state.ratingLoading = false;
+        state.ratingError = action.payload as string;
+        state.ratingSuccess = false;
       });
   },
 });

@@ -7,9 +7,9 @@ const api = axios.create({
   },
 });
 
-export const createCommentLike = async (commentLike: any) => {
+export const createCommentLike = async ({ commentId, userId }: any) => {
   try {
-    const response = await api.post("/Create", commentLike);
+    const response = await api.post("/Create", { commentId, userId });
     return response.data;
   } catch (error: any) {
     throw error.response?.data?.message || error.message;
@@ -18,7 +18,7 @@ export const createCommentLike = async (commentLike: any) => {
 
 export const deleteCommentLike = async (id: number) => {
   try {
-    const response = await api.delete(`/comments/like/${id}`); // Endpoint'i kontrol edin ve güncelleyin
+    const response = await api.delete(`/Delete/${id}`);
     return response.data;
   } catch (error: any) {
     throw error.response?.data?.message || error.message;

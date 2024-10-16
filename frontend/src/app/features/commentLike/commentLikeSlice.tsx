@@ -5,17 +5,17 @@ import {
 } from "./commentLikeAction";
 
 interface ContentsState {
-  loading: boolean;
-  error: string | null;
-  success: boolean;
-  data: any;
+  commentLikeLoading: boolean;
+  commentLikeError: string | null;
+  commentLikeSuccess: boolean;
+  commentLikeData: any;
 }
 
 const initialState: ContentsState = {
-  loading: false,
-  error: null,
-  success: false,
-  data: [],
+  commentLikeLoading: false,
+  commentLikeError: null,
+  commentLikeSuccess: false,
+  commentLikeData: [],
 };
 const contentsSlice = createSlice({
   name: "contents",
@@ -24,36 +24,36 @@ const contentsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(createCommentLikeAction.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.success = false;
+        state.commentLikeLoading = true;
+        state.commentLikeError = null;
+        state.commentLikeSuccess = false;
       })
       .addCase(createCommentLikeAction.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
-        state.data = action.payload;
+        state.commentLikeLoading = false;
+        state.commentLikeSuccess = true;
+        state.commentLikeData = action.payload;
       })
       .addCase(createCommentLikeAction.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.success = false;
+        state.commentLikeLoading = false;
+        state.commentLikeError = action.payload as string;
+        state.commentLikeSuccess = false;
       });
 
     builder
       .addCase(deleteCommentLikeAction.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.success = false;
+        state.commentLikeLoading = true;
+        state.commentLikeError = null;
+        state.commentLikeSuccess = false;
       })
       .addCase(deleteCommentLikeAction.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
-        state.data = action.payload;
+        state.commentLikeLoading = false;
+        state.commentLikeSuccess = true;
+        state.commentLikeData = action.payload;
       })
       .addCase(deleteCommentLikeAction.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.success = false;
+        state.commentLikeLoading = false;
+        state.commentLikeError = action.payload as string;
+        state.commentLikeSuccess = false;
       });
   },
 });

@@ -28,15 +28,16 @@ namespace Education.Business.Core.concrete
 
             var claims = new List<Claim>
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Email!),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(JwtRegisteredClaimNames.NameId, user.Id)
-        };
+			new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),			
+            new Claim("userID", user.Id),
+			new Claim("email", user.Email!),
+			new Claim("firstName", user.FirstName),
+            new Claim("lastName", user.LastName),
+            new Claim("image", user.Image),
+            new Claim("role", user.Role.ToString()),
+		};
 
-            if (!string.IsNullOrEmpty(user.Email))
-            {
-                claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
-            }
+         
 
             claims.AddRange(userClaims);
             claims.AddRange(roleClaims);

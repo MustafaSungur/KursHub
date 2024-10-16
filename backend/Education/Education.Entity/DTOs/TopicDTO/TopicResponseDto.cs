@@ -1,5 +1,6 @@
 ﻿
 using Education.Entity.DTOs.ContentDTO;
+using Education.Entity.DTOs.SubCategoryDTO;
 
 namespace Education.Entity.DTOs.TopicDTO
 {
@@ -9,10 +10,8 @@ namespace Education.Entity.DTOs.TopicDTO
 
 		public required string Name { get; set; }
 
-		public int SubCategoryId { get; set; }
+        public int  SubcategoryId { get; set; }
 
-		public string? SubCategoryName { get; set; }
-
-		public List<ContentResponseDto>? Contents { get; set; }
+        public List<ContentResponseDto>? Contents { get; set; }
 	}
 }

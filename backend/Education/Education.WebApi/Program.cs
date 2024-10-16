@@ -14,7 +14,12 @@ using System.Security.Claims;
 using System.Text;
 using Education.Business.Core.@abstract;
 using Education.Business.Core.concrete;
-
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using HealthChecks.UI.Client;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Configuration;
 namespace Education.WebApi
 {
 	public class Program
@@ -22,11 +27,20 @@ namespace Education.WebApi
 		public static async Task Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
-
+		
 			// Veritabaný yapýlandýrmasý
 			builder.Services.AddDbContext<AppDbContext>(options =>
 				options.UseNpgsql(builder.Configuration.GetConnectionString("EducationDBString")
 				?? throw new InvalidOperationException("Connection string 'EducationDBString' not found.")));
+
+			// Health checks için PostgreSQL 
+			builder.Services.AddHealthChecks()
+				.AddNpgSql(
+					builder.Configuration.GetConnectionString("EducationDBString")!,
+					name: "PostgreSQL",
+					failureStatus: HealthStatus.Unhealthy,
+					tags: ["db", "sql", "postgresql"]);
+
 
 			// Identity yapýlandýrmasý
 			builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -58,7 +72,33 @@ namespace Education.WebApi
 			// Add configuration for appsettings.json
 			builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
-			builder.Services.AddControllers();
+			var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>();
+
+			
+
+			// Configure CORS
+			builder.Services.AddCors(options =>
+			{
+				
+					options.AddDefaultPolicy(policy =>
+						policy.AllowAnyOrigin() // Allow any origin
+							.AllowAnyMethod() // Allow any method
+							.AllowAnyHeader()); // Allow any header
+				
+			});
+			builder.WebHost.ConfigureKestrel(options =>options.Limits.MaxRequestBodySize = builder.Configuration.GetValue<long>("FileSettings:MaxVideoSize"));
+
+			builder.Services.Configure<FormOptions>(options =>
+			{
+				options.MultipartBodyLengthLimit = builder.Configuration.GetValue<long>("FileSettings:MaxVideoSize"); 
+			});
+
+			builder.Services.AddControllers().AddJsonOptions(options =>
+			{
+				options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+				options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+			});
+
 
 			// AutoMapper'ý servislere ekliyoruz (Model-DTO dönüþümü için)
 			builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -138,6 +178,11 @@ namespace Education.WebApi
 
 			var app = builder.Build();
 
+			app.MapHealthChecks("/health", new HealthCheckOptions
+			{
+				ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+			});
+
 			// Development ortamý için Swagger yapýlandýrmasý
 			if (app.Environment.IsDevelopment())
 			{
@@ -148,12 +193,17 @@ namespace Education.WebApi
 				});
 			}
 
-			app.UseHttpsRedirection();
-
+			//app.UseHttpsRedirection();
+			//app.UseAuthentication();
+			//app.UseAuthorization();
+			app.UseCors();
+			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
-
 			app.MapControllers();
+
+
+
 
 			await DbInitializer.SeedData(app.Services);
 

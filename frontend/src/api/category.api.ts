@@ -10,6 +10,7 @@ const api = axios.create({
 export const getAllCategories = async () => {
   try {
     const response = await api.get("/GetAll");
+    console.log("api-category: ", response.data);
     return response.data;
   } catch (error: any) {
     throw error.response?.data?.message || error.message;

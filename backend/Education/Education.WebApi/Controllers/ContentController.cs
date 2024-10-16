@@ -3,6 +3,8 @@ using Education.Entity.DTOs.ContentDTO;
 using Microsoft.AspNetCore.Mvc;
 
 using Education.Business.Core.@abstract;
+using Education.Entity.DTOs.ContentFilterRequestDTO;
+using Newtonsoft.Json;
 
 namespace Education.WebApi.Controllers
 {
@@ -51,6 +53,18 @@ namespace Education.WebApi.Controllers
 			return NotFound(result.ErrorMessage); 
 		}
 
+		// Filtreleme endpoint'i
+		[HttpPost("FilterContents")]
+		public async Task<IActionResult> FilterContents([FromBody] ContentFilterRequestDto filterRequest)
+		{
+			var result = await _manager.ContentService.FilterContents(filterRequest);
+			
+			if (result.Success)
+			{
+				return Ok(result.Data); // Filtrelenmiş içerikleri döndür
+			}
+			return BadRequest(result.ErrorMessage); 
+		}
 
 		// İçerik oluşturma ve video/görsel yükleme için endpoint
 		[HttpPost("Create")]

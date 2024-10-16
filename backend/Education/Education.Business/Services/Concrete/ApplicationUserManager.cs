@@ -29,7 +29,7 @@ namespace Education.Business.Services.Concrete
 			user.Role = UserRole.User;
 			user.UserName = user.Email;
 			user.Image = userRequestDto.Image ?? string.Empty;
-			user.BirthDate = userRequestDto.BirthDate.ToUniversalTime();
+			user.BirthDate = (DateTime)(userRequestDto.BirthDate?.ToUniversalTime())!;
 
 			var result = await _userManager.CreateAsync(user, userRequestDto.Password!);
 
@@ -69,8 +69,8 @@ namespace Education.Business.Services.Concrete
 				return ServiceResult<ApplicationUserResponseDto>.FailureResult("Kullanıcı bulunamadı.");
 			}
 
-			user.FirstName = updatedUserDto.FirstName;
-			user.LastName = updatedUserDto.LastName;
+			user.FirstName = updatedUserDto.FirstName!;
+			user.LastName = updatedUserDto.LastName!;
 			user.Image = updatedUserDto.Image ?? string.Empty;
 			user.UpdatedDate = DateTime.UtcNow;
 

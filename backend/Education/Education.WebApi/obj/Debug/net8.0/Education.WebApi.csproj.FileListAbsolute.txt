@@ -163,3 +163,6 @@ C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.We
 C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\Xabe.FFmpeg.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\HealthChecks.NpgSql.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\HealthChecks.UI.Client.dll
+C:\Users\10\Desktop\Eğitim Videoları Web Sitesi\backend\Education\Education.WebApi\bin\Debug\net8.0\HealthChecks.UI.Core.dll

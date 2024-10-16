@@ -22,7 +22,10 @@ export const createUserAction = createAsyncThunk(
   "user/createUser",
   async ({ user, imageFile }: any, { rejectWithValue }) => {
     try {
+      console.log("userAction-req: ", user, imageFile);
       const response = await createUser(user, imageFile);
+      console.log("userAction-res: ", response);
+
       return response;
     } catch (error) {
       return rejectWithValue(error);
@@ -32,9 +35,12 @@ export const createUserAction = createAsyncThunk(
 
 export const updateUserAction = createAsyncThunk(
   "user/updateUser",
-  async ({ id, updatedUserDto, imageFile }: any, { rejectWithValue }) => {
+  async ({ id, updatedUser, imageFile }: any, { rejectWithValue }) => {
     try {
-      const response = await updateUser(id, updatedUserDto, imageFile);
+      console.log("Action Data - ID:", id);
+      console.log("Action Data - FormData:", updatedUser);
+
+      const response = await updateUser(id, updatedUser, imageFile);
       return response;
     } catch (error) {
       return rejectWithValue(error);

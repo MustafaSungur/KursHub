@@ -9,9 +9,9 @@ namespace Education.Entity.DTOs.ApplicationUserDTO
 
 		public string? LastName { get; set; }
 
-		public Genre Gender { get; set; } = Genre.NotSpecified;
+		public Genre? Gender { get; set; } = Genre.NotSpecified;
 
-		public DateTime BirthDate { get; set; }
+		public DateTime? BirthDate { get; set; }
 
 		public string? Password { get; set; }
 

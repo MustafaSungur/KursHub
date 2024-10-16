@@ -24,7 +24,7 @@ namespace Education.WebApi.Controllers
 
 		// Yeni kullanıcı oluşturma
 		[HttpPost("Create")]
-		public async Task<IActionResult> CreateUser([FromForm] ApplicationUserRequestDto userRequestDto, IFormFile imageFile)
+		public async Task<IActionResult> CreateUser([FromForm] ApplicationUserRequestDto userRequestDto, IFormFile? imageFile)
 		{
 			if (!ModelState.IsValid)
 			{
@@ -84,7 +84,7 @@ namespace Education.WebApi.Controllers
 
 		// Kullanıcı güncelleme
 		[HttpPut("Update/{id}")]
-		public async Task<IActionResult> UpdateUser(string id, [FromBody] ApplicationUserRequestDto updatedUserDto, IFormFile imageFile)
+		public async Task<IActionResult> UpdateUser(string id, [FromForm] ApplicationUserRequestDto updatedUserDto, IFormFile? imageFile)
 		{
 
 			if (!ModelState.IsValid)

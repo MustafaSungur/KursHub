@@ -33,3 +33,12 @@ export const deleteComment = async (id: number) => {
     throw error.response?.data?.message || error.message;
   }
 };
+
+export const getCommentByContentId = async (id: number) => {
+  try {
+    const response = await api.get(`/GetByContent/${id}`);
+    return response.data;
+  } catch (error: any) {
+    throw error.response?.data?.message || error.message;
+  }
+};

@@ -18,16 +18,21 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     checkCookie: (state) => {
+      console.log("checktoken çalıştı");
       const availableToken = cookie.get("token");
-      const decoded: any = jwtDecode(availableToken);
+
       if (availableToken) {
+        const decoded: any = jwtDecode(availableToken);
+        console.log("Decoded Token on Cookie Check:", decoded);
+
         state.userToken = availableToken;
-        state.userInfo = jwtDecode<any>(decoded).data;
+        state.userInfo = decoded;
       } else {
         state.userToken = null;
         state.userInfo = null;
       }
     },
+
     resetToken: (state) => {
       state.userToken = null;
       state.loading = false;
@@ -46,19 +51,21 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, { payload }: any) => {
         const decoded: any = jwtDecode(payload.token);
+        console.log("Decoded Token Payload:", decoded); // Token payload'u kontrol edin
+
         state.loading = false;
-        state.userInfo = decoded.data;
+        state.userInfo = decoded;
+
         state.userToken = payload.token;
         state.success = true;
 
         if (decoded.exp) {
           cookie.set("token", payload.token, {
-            expires: new Date(decoded.exp * 1000), // Token expiration time (Unix timestamp)
+            expires: new Date(decoded.exp * 1000),
             secure: true,
             path: "/",
           });
         } else {
-          // Eğer exp yoksa, burada farklı bir işlem yapabilirsiniz
           console.warn("Expiration date not found in the token.");
         }
       })

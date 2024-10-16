@@ -1,5 +1,8 @@
 ﻿
 using Education.Data.Repositories.Abstract;
+using Education.Entity.DTOs.ContentDTO;
+using Education.Entity.DTOs.ContentTagDTO;
+using Education.Entity.Enums;
 using Education.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,40 +16,74 @@ namespace Education.Data.Repositories.Concrete.EfCore
 
 		public async Task<IEnumerable<Content>> GetTopContents(int pageNumber, int pageSize)
 		{
-			// Önce veritabanından gerekli tüm veriyi al
+			// Tüm ilişkili verileri çekiyoruz ve Deleted olmayan içerikleri getiriyoruz
 			var contents = await _context.Contents
-				.Select(content => new
-				{
-					Content = content,
-					Ratings = _context.Ratings
-						.Where(r => r.ContentId == content.Id)
-						.Select(r => (double)r.RatingValue)
-						.ToList() // Veriyi bellek içine alır
-				})
-				.ToListAsync(); 
+				.Include(content => content.ContentTags)!
+					.ThenInclude(contentTag => contentTag.Tag)
+				.Include(content => content.CreatedUser) // Kullanıcı bilgilerini ekle
+				.Include(content => content.Topic) 
+				.Include(content => content.Ratings) // Rating bilgilerini ekle
+				.Include(content => content.ViewedUsers) // Görüntülenme bilgilerini ekle
+				.Where(content => content.State != State.Deleted) // Sadece Deleted olmayanları getir
+				.ToListAsync();
 
-			// Bellekte rating hesaplamalarını yap
-			var contentsWithRatings = contents
-				.Select(x => new
-				{
-					x.Content,
-					AverageRating = x.Ratings.Count != 0 ? x.Ratings.Average() : 0, // Rating varsa ortalamayı al, yoksa 0
-					RatingCount = x.Ratings.Count
-				});
+			var sortByRatingContents = contents
+				.OrderByDescending(x => x.Rating) // Rating ortalamasına göre sırala
+				.ThenByDescending(x => x.RatingCount) // Rating sayısına göre sırala
+				.ThenByDescending(x => x.CreatedDate) // Son oluşturulma tarihine göre sırala
+				.Skip((pageNumber - 1) * pageSize) // Sayfa atlama
+				.Take(pageSize) // Sayfa başına içerik sayısı
+				.ToList();
 
-			// Sıralama ve sayfalama işlemlerini bellek içinde gerçekleştir
-			var sortedContents = contentsWithRatings
-				.OrderByDescending(x => x.AverageRating)
-				.ThenByDescending(x => x.RatingCount)
-				.ThenByDescending(x => x.Content.CreatedDate)
-				.Skip((pageNumber - 1) * pageSize)
-				.Take(pageSize)
-				.Select(x => x.Content); // Sadece Content nesnesini seç
-
-			return sortedContents;
+			return sortByRatingContents;
 		}
 
 
+
+
+		public override IQueryable<Content> GetAll()
+		{
+			return base.GetAll()
+				.Include(c => c.ContentTags) 
+				.Include(c => c.Topic) 
+				.Include(c => c.ViewedUsers) 
+				.Include(c=>c.CreatedUser)
+				.Where(c=>c.State != State.Deleted);
+		}
+
+
+
+		public override async Task<Content?> GetByIdAsync(long id)
+		{
+			var contentData = await _context.Contents
+				.Where(c => c.Id == id && c.State!=State.Deleted)
+				.Include(content => content.Topic)			
+				.Include(content => content.ContentTags)!
+					.ThenInclude(contentTag => contentTag.Tag)
+				.Include(content => content.CreatedUser)
+				.Select(c => new
+				{
+					Content = c,
+					ViewCount = _context.ContentUsers.Count(v => v.ContentId == id), // Count ViewUsers entries by ContentId
+					RatingCount = _context.Ratings.Count(r => r.ContentId == id),   // Count Ratings entries by ContentId
+					RatingAverage = _context.Ratings
+									.Where(r => r.ContentId == id)
+									.Average(r => (double?)r.RatingValue) ?? 0      // Calculate average for Ratings by ContentId
+				})
+				.FirstOrDefaultAsync();
+
+			// Check if the content was found
+			if (contentData == null)
+				return null;
+
+			// Map calculated properties to the Content entity
+			//contentData.Content.ViewCount = contentData.ViewCount;
+			contentData.Content.RatingCount = contentData.RatingCount;
+			contentData.Content.Rating = (float)contentData.RatingAverage;
+
+			return contentData.Content;
+
+		}
 
 
 

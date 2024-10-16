@@ -2,17 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchAllCategories } from "./categoryAction";
 
 interface ContentsState {
-  loading: boolean;
-  error: string | null;
-  success: boolean;
-  data: any;
+  categoryLoading: boolean;
+  categoryError: string | null;
+  categorySuccess: boolean;
+  categoryData: any;
 }
 
 const initialState: ContentsState = {
-  loading: false,
-  error: null,
-  success: false,
-  data: [],
+  categoryLoading: false,
+  categoryError: null,
+  categorySuccess: false,
+  categoryData: [],
 };
 const contentsSlice = createSlice({
   name: "contents",
@@ -21,19 +21,19 @@ const contentsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllCategories.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.success = false;
+        state.categoryLoading = true;
+        state.categoryError = null;
+        state.categorySuccess = false;
       })
       .addCase(fetchAllCategories.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
-        state.data = action.payload;
+        state.categoryLoading = false;
+        state.categorySuccess = true;
+        state.categoryData = action.payload;
       })
       .addCase(fetchAllCategories.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.success = false;
+        state.categoryLoading = false;
+        state.categoryError = action.payload as string;
+        state.categorySuccess = false;
       });
   },
 });

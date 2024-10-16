@@ -1,6 +1,7 @@
 ﻿
 using Education.Data.Repositories.Abstract;
 using Education.Entity.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Education.Data.Repositories.Concrete.EfCore
 {
@@ -11,8 +12,6 @@ namespace Education.Data.Repositories.Concrete.EfCore
 
 		}
 
-
 		
-
 	}
 }

@@ -16,7 +16,8 @@ export const loginUser = async ({
   password: string;
 }): Promise<unknown> => {
   try {
-    const response = await api.post("/login", { email, password });
+    console.log("login-req", email, password);
+    const response = await api.post("/Login", { email, password });
     return response.data;
   } catch (error) {
     const axiosError = error as AxiosError<{ message: string }>;

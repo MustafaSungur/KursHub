@@ -9,7 +9,7 @@ const api = axios.create({
 
 export const getUserById = async (id: string) => {
   try {
-    const response = await api.get(`/GetUserById/${id}`);
+    const response = await api.get(`/${id}`);
     return response.data;
   } catch (error: any) {
     throw error.response?.data?.message || error.message;
@@ -18,18 +18,24 @@ export const getUserById = async (id: string) => {
 
 export const createUser = async (user: any, imageFile: File) => {
   const formData = new FormData();
-  formData.append("user.Email", user.Email);
-  formData.append("user.FirstName", user.FirstName);
-  formData.append("user.LastName", user.LastName);
-  formData.append("user.birthdate", user.birthdate);
-  formData.append("user.password", user.password);
-  formData.append("user.confirmPassword", user.confirmPassword);
-  formData.append("user.Image", user.Image || "");
+  formData.append("Email", user.email); // Match the exact field names expected by the backend
+  formData.append("FirstName", user.firstName);
+  formData.append("LastName", user.lastName);
+  formData.append("birthdate", user.birthdate);
+  formData.append("password", user.password);
+  formData.append("confirmPassword", user.confirmPassword);
+  formData.append("Image", user.image || ""); // Optional field handling
   if (imageFile) {
     formData.append("imageFile", imageFile);
   }
+
   try {
-    const response = await api.post("/Create", formData);
+    const response = await api.post("/Create", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    console.log("user api-res:", response.data);
     return response.data;
   } catch (error: any) {
     throw error.response?.data?.message || error.message;
@@ -41,17 +47,30 @@ export const updateUser = async (
   updatedUser: any,
   imageFile: File
 ) => {
+  console.log("Incoming Data:", id, updatedUser, imageFile);
+
   const formData = new FormData();
-  formData.append("updatedUser.FirstName", updatedUser.FirstName);
-  formData.append("updatedUser.LastName", updatedUser.LastName);
-  formData.append("updatedUser.Image", updatedUser.Image || "");
+
+  formData.append("FirstName", updatedUser.firstName || "");
+  formData.append("LastName", updatedUser.lastName || "");
+  formData.append("Email", updatedUser.email || "");
+  formData.append("Password", updatedUser.password || "");
+  formData.append("ConfirmPassword", updatedUser.confirmPassword || "");
+  formData.append("BirthDate", updatedUser.birthDate || "");
+  formData.append("Gender", updatedUser.gender || "");
+  formData.append("Image", updatedUser.image || "");
 
   if (imageFile) {
     formData.append("imageFile", imageFile);
   }
+  console.log("formdata:", id, formData, imageFile);
 
   try {
-    const response = await api.put(`/Update/${id}`, formData);
+    const response = await api.put(`/Update/${id}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return response.data;
   } catch (error: any) {
     throw error.response?.data?.message || error.message;

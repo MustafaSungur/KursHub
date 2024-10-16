@@ -3,9 +3,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const createRatingAction = createAsyncThunk(
   "rating/createRating",
-  async (ratingRequestDto, { rejectWithValue }) => {
+  async ({ contentId, userId, rating }: any, { rejectWithValue }) => {
     try {
-      const response = await createRating(ratingRequestDto);
+      const response = await createRating({ contentId, userId, rating });
       return response;
     } catch (error) {
       return rejectWithValue(error);

@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "NYYejCuQh28TFn+ZNMZ48Q7C6/Yn5JlF3FzPJbLQXrYow2YZ0vtOUl6j6YRrMUpN2jY2GZzGqP4xsoi1c4J7EA==",
+  "dgSpecHash": "FSw2JzrsHHq+HvK+2qMZTrpOVBWsiY9uDZ0brqqUpYbbT/ySg9R51p8VysxB79xOrTeNKEWR/ywLdgsJotQB/w==",
   "success": true,
   "projectFilePath": "C:\\Users\\10\\Desktop\\Eğitim Videoları Web Sitesi\\backend\\Education\\Education.WebApi\\Education.WebApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\10\\.nuget\\packages\\aspnetcore.healthchecks.npgsql\\8.0.2\\aspnetcore.healthchecks.npgsql.8.0.2.nupkg.sha512",
+    "C:\\Users\\10\\.nuget\\packages\\aspnetcore.healthchecks.ui.client\\8.0.1\\aspnetcore.healthchecks.ui.client.8.0.1.nupkg.sha512",
+    "C:\\Users\\10\\.nuget\\packages\\aspnetcore.healthchecks.ui.core\\8.0.1\\aspnetcore.healthchecks.ui.core.8.0.1.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
@@ -40,6 +43,8 @@
     "C:\\Users\\10\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\microsoft.extensions.dependencymodel\\8.0.1\\microsoft.extensions.dependencymodel.8.0.1.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\microsoft.extensions.diagnostics.abstractions\\8.0.1\\microsoft.extensions.diagnostics.abstractions.8.0.1.nupkg.sha512",
+    "C:\\Users\\10\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks\\8.0.0\\microsoft.extensions.diagnostics.healthchecks.8.0.0.nupkg.sha512",
+    "C:\\Users\\10\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks.abstractions\\8.0.0\\microsoft.extensions.diagnostics.healthchecks.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\8.0.0\\microsoft.extensions.fileproviders.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\8.0.1\\microsoft.extensions.hosting.abstractions.8.0.1.nupkg.sha512",
     "C:\\Users\\10\\.nuget\\packages\\microsoft.extensions.identity.core\\8.0.8\\microsoft.extensions.identity.core.8.0.8.nupkg.sha512",

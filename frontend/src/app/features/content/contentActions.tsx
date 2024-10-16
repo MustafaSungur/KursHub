@@ -1,11 +1,12 @@
 import {
   createContent,
   deleteContent,
+  filterContents,
   getContentById,
   getContentUsersByUserId,
   getTopContents,
   updateContent,
-} from "@/api/course.api";
+} from "@/api/content.api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchTopContents = createAsyncThunk(
@@ -20,10 +21,24 @@ export const fetchTopContents = createAsyncThunk(
   }
 );
 
+export const filterContentsAction = createAsyncThunk(
+  "content/filterContents",
+  async (filterRequest: any, { rejectWithValue }) => {
+    try {
+      const response = await filterContents(filterRequest);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const fetchContentById = createAsyncThunk(
   "content/fetchContentById",
   async (id: number, { rejectWithValue }) => {
     try {
+      console.log("actin-contetn id: ", id);
+
       const response = await getContentById(id);
       return response;
     } catch (error) {

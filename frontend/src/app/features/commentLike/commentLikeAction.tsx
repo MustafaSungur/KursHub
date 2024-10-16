@@ -3,9 +3,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const createCommentLikeAction = createAsyncThunk(
   "comment/createCommentLike",
-  async (commentLike, { rejectWithValue }) => {
+  async ({ commentId, userId }: any, { rejectWithValue }) => {
     try {
-      const response = await createCommentLike(commentLike);
+      const response = await createCommentLike({ commentId, userId });
       return response;
     } catch (error) {
       return rejectWithValue(error);

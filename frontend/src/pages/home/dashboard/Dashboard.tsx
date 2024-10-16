@@ -1,4 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/app/store";
+import {
+  updateUserAction,
+  deleteUserAction,
+  fetchUserById,
+} from "@/app/features/user/userAction";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -17,28 +24,108 @@ import {
   LayoutDashboard,
   Trash2,
   Upload,
+  CheckCircle,
+  XCircle,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Footer from "@/components/Footer";
+
+interface UserInfo {
+  userID: string;
+  firstName?: string | "";
+  lastName?: string | "";
+  email?: string | "";
+  image?: string | "";
+  role?: string | "";
+}
 
 export default function Dashboard() {
-  const [user, setUser] = useState({
-    name: "Ahmet",
-    surname: "Yılmaz",
-    email: "ahmet.yilmaz@example.com",
-    avatar: "/placeholder.svg?height=128&width=128",
-  });
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const { userInfo } = useSelector((state: RootState) => state.auth) as {
+    userInfo: UserInfo | null;
+  };
+  const { userLoading, userData } = useSelector(
+    (state: RootState) => state.user
+  );
 
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
-  const [updatedUser, setUpdatedUser] = useState({ ...user });
+  const [updatedUser, setUpdatedUser] = useState<UserInfo | null>(null);
+  const [newImage, setNewImage] = useState<File | null>(null);
+  const [updateStatus, setUpdateStatus] = useState<"success" | "error" | null>(
+    null
+  );
 
-  const handleUpdateUser = () => {
-    setUser(updatedUser);
-    setIsUpdateModalOpen(false);
+  useEffect(() => {
+    if (userInfo?.userID) {
+      dispatch(fetchUserById(userInfo.userID));
+    }
+  }, [userInfo, dispatch]);
+
+  useEffect(() => {
+    if (userData) {
+      setUpdatedUser({
+        userID: userData.userID,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        email: userData.email,
+        image: userData.image,
+        role: userData.role,
+      });
+    }
+  }, [userData]);
+
+  const handleUpdateUser = async () => {
+    if (!updatedUser) return;
+
+    try {
+      const userData = {
+        firstName: updatedUser.firstName,
+        lastName: updatedUser.lastName,
+      };
+
+      await dispatch(
+        updateUserAction({
+          id: userInfo?.userID,
+          updatedUser: userData,
+          imageFile: newImage,
+        })
+      ).unwrap();
+
+      setUpdateStatus("success");
+      setTimeout(() => {
+        setIsUpdateModalOpen(false);
+        setUpdateStatus(null);
+      }, 2000);
+    } catch (error) {
+      console.error("Failed to update user:", error);
+      setUpdateStatus("error");
+    }
   };
+
+  const handleDeleteUser = async () => {
+    if (!updatedUser) return;
+    if (
+      window.confirm(
+        "Are you sure you want to delete your account? This action cannot be undone."
+      )
+    ) {
+      try {
+        await dispatch(deleteUserAction(updatedUser.userID)).unwrap();
+        dispatch(logout());
+        navigate("/");
+      } catch (error) {
+        console.error("Failed to delete user:", error);
+      }
+    }
+  };
+
   const openInstructorPanel = () => {
-    const url = `${window.location.origin}/instructor/edit`; // Mevcut domain + /instructor rotası
-    window.open(url, "_blank"); // Yeni sekmede aç
+    const url = `${window.location.origin}/instructor/edit`;
+    window.open(url, "_blank");
   };
+
+  if (!updatedUser) return null;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -53,19 +140,23 @@ export default function Dashboard() {
             <div className="flex items-center space-x-4 mb-4">
               <Avatar className="h-20 w-20">
                 <AvatarImage
-                  src={user.avatar}
-                  alt={`${user.name} ${user.surname}`}
+                  src={
+                    updatedUser.image || "/placeholder.svg?height=128&width=128"
+                  }
+                  alt={`${updatedUser.firstName || ""} ${
+                    updatedUser.lastName || ""
+                  }`}
                 />
                 <AvatarFallback>
-                  {user.name[0]}
-                  {user.surname[0]}
+                  {updatedUser.firstName?.[0] || ""}
+                  {updatedUser.lastName?.[0] || ""}
                 </AvatarFallback>
               </Avatar>
               <div>
                 <h3 className="text-xl font-semibold">
-                  {user.name} {user.surname}
+                  {updatedUser.firstName} {updatedUser.lastName}
                 </h3>
-                <p className="text-sm text-gray-500">{user.email}</p>
+                <p className="text-sm text-gray-500">{updatedUser.email}</p>
               </div>
             </div>
             <Dialog
@@ -85,12 +176,17 @@ export default function Dashboard() {
                   <div className="flex items-center space-x-4">
                     <Avatar className="h-20 w-20">
                       <AvatarImage
-                        src={updatedUser.avatar}
-                        alt={`${updatedUser.name} ${updatedUser.surname}`}
+                        src={
+                          updatedUser.image ||
+                          "/placeholder.svg?height=128&width=128"
+                        }
+                        alt={`${updatedUser.firstName || ""} ${
+                          updatedUser.lastName || ""
+                        }`}
                       />
                       <AvatarFallback>
-                        {updatedUser.name[0]}
-                        {updatedUser.surname[0]}
+                        {updatedUser.firstName?.[0] || ""}
+                        {updatedUser.lastName?.[0] || ""}
                       </AvatarFallback>
                     </Avatar>
                     <Label
@@ -106,11 +202,12 @@ export default function Dashboard() {
                         onChange={(e) => {
                           const file = e.target.files?.[0];
                           if (file) {
+                            setNewImage(file);
                             const reader = new FileReader();
                             reader.onload = (e) => {
                               setUpdatedUser((prev) => ({
-                                ...prev,
-                                avatar: e.target?.result as string,
+                                ...prev!,
+                                image: e.target?.result as string,
                               }));
                             };
                             reader.readAsDataURL(file);
@@ -120,27 +217,27 @@ export default function Dashboard() {
                     </Label>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="name">İsim</Label>
+                    <Label htmlFor="firstName">İsim</Label>
                     <Input
-                      id="name"
-                      value={updatedUser.name}
+                      id="firstName"
+                      value={updatedUser.firstName || ""}
                       onChange={(e) =>
                         setUpdatedUser((prev) => ({
-                          ...prev,
-                          name: e.target.value,
+                          ...prev!,
+                          firstName: e.target.value,
                         }))
                       }
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="surname">Soyisim</Label>
+                    <Label htmlFor="lastName">Soyisim</Label>
                     <Input
-                      id="surname"
-                      value={updatedUser.surname}
+                      id="lastName"
+                      value={updatedUser.lastName || ""}
                       onChange={(e) =>
                         setUpdatedUser((prev) => ({
-                          ...prev,
-                          surname: e.target.value,
+                          ...prev!,
+                          lastName: e.target.value,
                         }))
                       }
                     />
@@ -149,9 +246,31 @@ export default function Dashboard() {
                 <Button
                   className="bg-amber-500 hover:bg-amber-600 border-none"
                   onClick={handleUpdateUser}
+                  disabled={userLoading}
                 >
-                  Güncelle
+                  {userLoading ? "Güncelleniyor..." : "Güncelle"}
                 </Button>
+                {updateStatus && (
+                  <div
+                    className={`mt-4 p-2 rounded-md ${
+                      updateStatus === "success"
+                        ? "bg-green-100 text-green-800"
+                        : "bg-red-100 text-red-800"
+                    }`}
+                  >
+                    {updateStatus === "success" ? (
+                      <div className="flex items-center">
+                        <CheckCircle className="mr-2 h-5 w-5" />
+                        Profil başarıyla güncellendi.
+                      </div>
+                    ) : (
+                      <div className="flex items-center">
+                        <XCircle className="mr-2 h-5 w-5" />
+                        Profil güncellenirken bir hata oluştu.
+                      </div>
+                    )}
+                  </div>
+                )}
               </DialogContent>
             </Dialog>
           </section>
@@ -166,34 +285,34 @@ export default function Dashboard() {
                   <PlayCircle className="mr-2 h-4 w-4" /> İzlediğim Eğitimler
                 </Button>
               </Link>
+              {updatedUser.role === "Instructor" && (
+                <Button
+                  className="w-full"
+                  variant="outline"
+                  onClick={openInstructorPanel}
+                >
+                  <LayoutDashboard className="mr-2 h-4 w-4" /> Eğitmen Kontrol
+                  Paneli
+                </Button>
+              )}
               <Button
                 className="w-full"
-                variant="outline"
-                onClick={openInstructorPanel}
+                variant="destructive"
+                onClick={handleDeleteUser}
+                disabled={userLoading}
               >
-                <LayoutDashboard className="mr-2 h-4 w-4" /> Eğitmen Kontrol
-                Paneli
-              </Button>
-              <Button className="w-full" variant="destructive">
-                <Trash2 className="mr-2 h-4 w-4" /> Hesabı Sil
+                <Trash2 className="mr-2 h-4 w-4" />
+                {userLoading ? "Hesap Siliniyor..." : "Hesabı Sil"}
               </Button>
             </div>
           </section>
         </div>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-500">
-          © 2024 KursHub. Tüm hakları saklıdır.
-        </p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <a className="text-xs hover:underline underline-offset-4" href="#">
-            Kullanım Şartları
-          </a>
-          <a className="text-xs hover:underline underline-offset-4" href="#">
-            Gizlilik
-          </a>
-        </nav>
-      </footer>
+      <Footer />
     </div>
   );
+}
+
+function logout(): any {
+  throw new Error("Function not implemented.");
 }

@@ -7,17 +7,17 @@ import {
 } from "./userAction";
 
 interface ContentsState {
-  loading: boolean;
-  error: string | null;
-  success: boolean;
-  data: any;
+  userLoading: boolean;
+  userError: string | null;
+  userSuccess: boolean;
+  userData: any;
 }
 
 const initialState: ContentsState = {
-  loading: false,
-  error: null,
-  success: false,
-  data: [],
+  userLoading: false,
+  userError: null,
+  userSuccess: false,
+  userData: [],
 };
 const contentsSlice = createSlice({
   name: "contents",
@@ -26,70 +26,70 @@ const contentsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUserById.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.success = false;
+        state.userLoading = true;
+        state.userError = null;
+        state.userSuccess = false;
       })
       .addCase(fetchUserById.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
-        state.data = action.payload;
+        state.userLoading = false;
+        state.userSuccess = true;
+        state.userData = action.payload;
       })
       .addCase(fetchUserById.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.success = false;
+        state.userLoading = false;
+        state.userError = action.payload as string;
+        state.userSuccess = false;
       });
 
     builder
       .addCase(createUserAction.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.success = false;
+        state.userLoading = true;
+        state.userError = null;
+        state.userSuccess = false;
       })
       .addCase(createUserAction.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
-        state.data = action.payload;
+        state.userLoading = false;
+        state.userSuccess = true;
+        state.userData = action.payload;
       })
       .addCase(createUserAction.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.success = false;
+        state.userLoading = false;
+        state.userError = action.payload as string;
+        state.userSuccess = false;
       });
 
     builder
       .addCase(updateUserAction.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.success = false;
+        state.userLoading = true;
+        state.userError = null;
+        state.userSuccess = false;
       })
       .addCase(updateUserAction.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
-        state.data = action.payload;
+        state.userLoading = false;
+        state.userSuccess = true;
+        state.userData = action.payload;
       })
       .addCase(updateUserAction.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.success = false;
+        state.userLoading = false;
+        state.userError = action.payload as string;
+        state.userSuccess = false;
       });
 
     builder
       .addCase(deleteUserAction.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.success = false;
+        state.userLoading = true;
+        state.userError = null;
+        state.userSuccess = false;
       })
       .addCase(deleteUserAction.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
-        state.data = action.payload;
+        state.userLoading = false;
+        state.userSuccess = true;
+        state.userData = action.payload;
       })
       .addCase(deleteUserAction.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.success = false;
+        state.userLoading = false;
+        state.userError = action.payload as string;
+        state.userSuccess = false;
       });
   },
 });

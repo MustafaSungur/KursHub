@@ -1,6 +1,8 @@
-﻿using Education.Entity.DTOs.CommentDTO;
+﻿using Education.Entity.DTOs.ApplicationUserDTO;
+using Education.Entity.DTOs.CommentDTO;
 using Education.Entity.DTOs.ContentTagDTO;
 using Education.Entity.DTOs.TopicDTO;
+using Education.Entity.Models;
 
 namespace Education.Entity.DTOs.ContentDTO
 {
@@ -14,21 +16,18 @@ namespace Education.Entity.DTOs.ContentDTO
 
 		public string? VideoUrl { get; set; }
 
+		public string? ImageUrl { get; set; }
+
 		public long ViewCount { get; set; }
-
-		public string? UserId { get; set; }
-
-		public string? UserName { get; set; }
-
-		public int TopicId { get; set; }
-
-		public string? TopicName { get; set; }
 
 		public int RatingCount { get; set; }
 
 		public float Rating { get; set; }
 
-		public int SubCategoryId { get; set; }
+		public DateTime CreatedDate { get; set; }
+
+		public ApplicationUserResponseDto? CreatedUser { get; set; }
+	
 
 		public required TopicResponseDto  Topic { get; set; }
 

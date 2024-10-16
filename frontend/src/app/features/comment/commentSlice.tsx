@@ -2,17 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createCommentAction, updateCommentAction } from "./commentAction";
 
 interface ContentsState {
-  loading: boolean;
-  error: string | null;
-  success: boolean;
-  data: any;
+  commentLoading: boolean;
+  commentError: string | null;
+  commentSuccess: boolean;
+  commentData: any;
 }
 
 const initialState: ContentsState = {
-  loading: false,
-  error: null,
-  success: false,
-  data: [],
+  commentLoading: false,
+  commentError: null,
+  commentSuccess: false,
+  commentData: [],
 };
 const contentsSlice = createSlice({
   name: "contents",
@@ -21,36 +21,36 @@ const contentsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(createCommentAction.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.success = false;
+        state.commentLoading = true;
+        state.commentError = null;
+        state.commentSuccess = false;
       })
       .addCase(createCommentAction.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
-        state.data = action.payload;
+        state.commentLoading = false;
+        state.commentSuccess = true;
+        state.commentData = action.payload;
       })
       .addCase(createCommentAction.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.success = false;
+        state.commentLoading = false;
+        state.commentError = action.payload as string;
+        state.commentSuccess = false;
       });
 
     builder
       .addCase(updateCommentAction.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-        state.success = false;
+        state.commentLoading = true;
+        state.commentError = null;
+        state.commentSuccess = false;
       })
       .addCase(updateCommentAction.fulfilled, (state, action) => {
-        state.loading = false;
-        state.success = true;
-        state.data = action.payload;
+        state.commentLoading = false;
+        state.commentSuccess = true;
+        state.commentData = action.payload;
       })
       .addCase(updateCommentAction.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload as string;
-        state.success = false;
+        state.commentLoading = false;
+        state.commentError = action.payload as string;
+        state.commentSuccess = false;
       });
   },
 });

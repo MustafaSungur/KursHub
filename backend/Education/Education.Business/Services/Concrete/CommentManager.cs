@@ -60,7 +60,8 @@ namespace Education.Business.Services.Concrete
 				return ServiceResult<CommentResponseDto>.FailureResult("Yorum bulunamadı.");
 			}
 
-			_mapper.Map(commentRequestDto, comment);
+			comment.Description= commentRequestDto.Description;
+
 			var updatedComment = await _repositoryManager.CommentRepository.UpdateAsync(comment);
 
 			var commentResponseDto = _mapper.Map<CommentResponseDto>(updatedComment);
@@ -100,16 +101,20 @@ namespace Education.Business.Services.Concrete
 		{
 			var comments = await _repositoryManager.CommentRepository
 				.FindByCondition(c => c.ContentId == contentId)
+				.Include(c => c.User)          
+				.Include(c => c.Likes)        
 				.ToListAsync();
 
-			if (!comments.Any())
+			if (comments.Count == 0)
 			{
 				return ServiceResult<IEnumerable<CommentResponseDto>>.FailureResult("İçeriğe ait yorum bulunamadı.");
 			}
 
-			var commentResponseDtos = _mapper.Map<IEnumerable<CommentResponseDto>>(comments);
+			var commentResponseDtos = comments.Select(_mapper.Map<CommentResponseDto>).ToList();
+
 			return ServiceResult<IEnumerable<CommentResponseDto>>.SuccessResult(commentResponseDtos);
 		}
+
 
 		// Yorum ID ve Kullanıcı ID'ye göre yorumu getirme
 		public async Task<ServiceResult<CommentResponseDto>> GetCommentByUserAndCommentIdAsync(long commentId, string userId)

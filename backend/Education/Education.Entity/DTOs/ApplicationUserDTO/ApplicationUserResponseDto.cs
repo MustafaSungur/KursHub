@@ -26,7 +26,7 @@ namespace Education.Entity.DTOs.ApplicationUserDTO
 		
 		public required UserRole Role { get; set; }
 
-		public required string Image { get; set; }
+		public  string? Image { get; set; }
 
 
     }

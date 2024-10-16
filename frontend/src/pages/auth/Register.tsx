@@ -1,20 +1,31 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/app/store";
+import { createUserAction } from "@/app/features/user/userAction";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BookOpen, User, Mail, Lock, Calendar, Upload } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import view from "../../assets/2.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import view from "../../assets/2-min.jpg";
+
 export default function Register() {
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const { userLoading, userError } = useSelector(
+    (state: RootState) => state.user
+  );
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    dateOfBirth: "",
-    avatar: null as File | null,
+    birthDate: "",
+    gender: "",
+    image: null as File | null,
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,15 +40,35 @@ export default function Register() {
     }
   };
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Burada kayıt işlemleri yapılacak
-    console.log("Register attempt with:", formData);
+    if (formData.password !== formData.confirmPassword) {
+      alert("Şifreler eşleşmiyor!");
+      return;
+    }
+
+    const userData = {
+      email: formData.email,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      birthdate: new Date(formData.birthDate).toISOString(),
+      password: formData.password,
+      confirmPassword: formData.confirmPassword,
+      image: formData.image ? formData.image.name : "",
+    };
+
+    try {
+      await dispatch(
+        createUserAction({ user: userData, imageFile: formData.image })
+      ).unwrap();
+      navigate("/auth/login");
+    } catch (error) {
+      console.error("Registration failed:", error);
+    }
   };
 
   return (
-    <div className="flex min-h-screen">
-      {/* Sol taraf - Kayıt formu */}
+    <div className="flex min-h-screen lg:w-10/12 lg:m-auto">
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center p-8 lg:p-24 overflow-y-auto">
         <div className="w-full max-w-md">
           <Link to="/">
@@ -130,14 +161,14 @@ export default function Register() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="dateOfBirth">Doğum Tarihi</Label>
+              <Label htmlFor="birthDate">Doğum Tarihi</Label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <Input
-                  id="dateOfBirth"
-                  name="dateOfBirth"
+                  id="birthDate"
+                  name="birthDate"
                   type="date"
-                  value={formData.dateOfBirth}
+                  value={formData.birthDate}
                   onChange={handleInputChange}
                   className="pl-10"
                   required
@@ -145,13 +176,13 @@ export default function Register() {
               </div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="avatar">Profil Resmi</Label>
+              <Label htmlFor="image">Profil Resmi</Label>
               <div className="flex items-center space-x-4">
                 <Avatar className="h-20 w-20">
                   <AvatarImage
                     src={
-                      formData.avatar
-                        ? URL.createObjectURL(formData.avatar)
+                      formData.image
+                        ? URL.createObjectURL(formData.image)
                         : undefined
                     }
                   />
@@ -161,14 +192,14 @@ export default function Register() {
                   </AvatarFallback>
                 </Avatar>
                 <Label
-                  htmlFor="avatar"
+                  htmlFor="image"
                   className="cursor-pointer bg-gray-100 px-3 py-2 rounded-md hover:bg-gray-200 transition-colors"
                 >
                   <Upload className="h-4 w-4 inline-block mr-2" />
                   Resim Yükle
                   <Input
-                    id="avatar"
-                    name="avatar"
+                    id="image"
+                    name="image"
                     type="file"
                     accept="image/*"
                     onChange={handleInputChange}
@@ -180,10 +211,14 @@ export default function Register() {
             <Button
               type="submit"
               className="w-full bg-amber-500 hover:bg-amber-600 rounded-xl"
+              disabled={userLoading}
             >
-              Kayıt Ol
+              {userLoading ? "Kaydediliyor..." : "Kayıt Ol"}
             </Button>
           </form>
+          {userError && (
+            <div className="mt-4 text-red-500 text-center">{userError}</div>
+          )}
           <div className="mt-6 text-center">
             <span className="text-sm text-gray-600">
               Zaten bir hesabınız var mı?{" "}
@@ -198,7 +233,6 @@ export default function Register() {
         </div>
       </div>
 
-      {/* Sağ taraf - Görsel */}
       <div className="hidden lg:block w-1/2 bg-amber-100">
         <img
           src={view}

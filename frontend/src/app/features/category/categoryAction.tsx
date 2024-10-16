@@ -6,6 +6,7 @@ export const fetchAllCategories = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await getAllCategories();
+      console.log("category-action: ", response);
       return response;
     } catch (error) {
       return rejectWithValue(error);

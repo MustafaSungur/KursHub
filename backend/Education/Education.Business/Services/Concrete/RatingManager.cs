@@ -22,6 +22,11 @@ namespace Education.Business.Services.Concrete
 		// Rating oluşturma işlemi
 		public async Task<ServiceResult<RatingResponseDto>> CreateRatingAsync(RatingRequestDto ratingRequestDto)
 		{
+			var check = await _repositoryManager.RatingRepository.CheckRatingAsync(ratingRequestDto.UserId!, ratingRequestDto.ContentId);
+			if (check)
+			{
+				return ServiceResult<RatingResponseDto>.FailureResult("Değerlendirmeniz Bulunmaktadır");
+			}
 			var rating = _mapper.Map<Rating>(ratingRequestDto);
 			var createdRating = await _repositoryManager.RatingRepository.CreateAsync(rating);
 
